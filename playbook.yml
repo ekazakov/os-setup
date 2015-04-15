@@ -1,0 +1,24 @@
+# Run ansible 'ansible-playbook -K -i inventory playbook.yml'
+
+# fresh ansible installation
+# sudo add-apt-repository ppa:rquillo/ansible
+# sudo apt-get update
+# sudo apt-get install ansible
+- name: a play that runs entirely on the ansible host
+  hosts: localhost
+  connection: local
+
+  user: evgeniy
+  sudo: true
+
+ # additional variables
+  vars:
+    user: evgeniy
+
+  # roles are a way to group tasks; they will run in the sequence determined here
+  roles:
+    - system
+
+
+
+# ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
