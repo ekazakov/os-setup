@@ -43,9 +43,9 @@
     - wget
     - nginx               
     - editorconfig      
-    - nodejs
-    - nodejs-legacy
-    - npm
+    # - nodejs
+    # - nodejs-legacy
+    # - npm
     - emacs
 
   sudo: true
