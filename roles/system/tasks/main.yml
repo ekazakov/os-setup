@@ -4,9 +4,6 @@
 # also have a `name`, which will be displayed while running the task to give a
 # better description of the running task.
 
-
-# before install node 'curl -sL https://deb.nodesource.com/setup | sudo bash -'
-
 - name: update
   apt: update_cache=true
 
@@ -51,10 +48,20 @@
   sudo: true
 
   # for global npm install without sudo
-  # chown -hR evgeniy /usr/local/
-  # sudo npm update -g npm
-  # sudo npm i -g n
-  # n node 0.12.1
+- name: Configure global npm install without sudo
+  command: chown -hR evgeniy /usr/local/
+
+
+- name: Update npm
+  command: npm update -g npm
+
+
+- name: Install n (node version manager)
+  npm: name=n global=yes
+
+- name: Update node
+  command: n node 0.12.1
+
 
 # This is an example of how to gather information from the machine. We
 # run a command with the "shell" module and register the result into the
