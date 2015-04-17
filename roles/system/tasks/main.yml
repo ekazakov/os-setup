@@ -90,3 +90,6 @@
 
 - name: Configure Oh-my-zsh
   command: cp /home/evgeniy/.oh-my-zsh/templates/zshrc.zsh-template /home/evgeniy/.zshrc
+
+- name: Compaudit config
+  command: compaudit | xargs chmod g-w
