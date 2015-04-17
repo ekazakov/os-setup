@@ -17,6 +17,7 @@
     - zsh
     - tmux
     - git
+    - git-core
     - ssh
     - ruby
     - ruby-dev
@@ -33,6 +34,7 @@
 
     - libpcre3 
     - libpcre3-dev
+    - openssl
     
     - silversearcher-ag
     - markdown  
@@ -66,19 +68,25 @@
 # This is an example of how to gather information from the machine. We
 # run a command with the "shell" module and register the result into the
 # "default_shell" variable
-# - name: zsh facts
-#   shell: 'echo $SHELL'
-#   register: default_shell
-#   # changed when determines when will this task be considered changed when running
-#   # ansible. In this case, we want it to always be false, as we are just
-#   # retrieving information.
-#   changed_when: False
-#   sudo: no
+- name: zsh facts
+  shell: 'echo $SHELL'
+  register: default_shell
+  # changed when determines when will this task be considered changed when running
+  # ansible. In this case, we want it to always be false, as we are just
+  # retrieving information.
+  changed_when: False
+  sudo: no
 
 # Now, we want to set zsh as the default shell, unless it is already the default
 # one.
-# - name: make zsh default
-#   shell:  chsh -s /bin/zsh 
-#   # This task will run only when the following is true. In here, we check the
-#   # value registered previously within the "default_shell" variable.
-#   when: default_shell.stdout.find('/bin/zsh') == -1
+- name: make zsh default
+  command: chsh -s /usr/bin/zsh 
+  # This task will run only when the following is true. In here, we check the
+  # value registered previously within the "default_shell" variable.
+  when: default_shell.stdout.find('/usr/bin/zsh') == -1
+
+- name: Install Oh-my-zsh
+  command: git clone git://github.com/robbyrussell/oh-my-zsh.git /home/evgeniy/.oh-my-zsh
+
+- name: Configure Oh-my-zsh
+  command: cp /home/evgeniy/.oh-my-zsh/templates/zshrc.zsh-template /home/evgeniy/.zshrc
