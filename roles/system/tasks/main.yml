@@ -49,6 +49,9 @@
 
   sudo: true
 
+- name: Tmuxinator
+  gem: name=tmuxinator
+
   # for global npm install without sudo
 - name: Configure global npm install without sudo
   command: chown -hR evgeniy /usr/local/
