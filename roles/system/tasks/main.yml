@@ -102,6 +102,7 @@
   # This task will run only when the following is true. In here, we check the
   # value registered previously within the "default_shell" variable.
   when: default_shell.stdout.find('/usr/bin/zsh') == -1
+  sudo: no
 
 - name: Install Oh-my-zsh
   command: git clone git://github.com/robbyrussell/oh-my-zsh.git /home/evgeniy/.oh-my-zsh
