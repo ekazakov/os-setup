@@ -4,6 +4,9 @@
 # also have a `name`, which will be displayed while running the task to give a
 # better description of the running task.
 
+- name: Update add-apt-repository -y ppa:pi-rho/dev
+  apt_repository: repo=ppa:pi-rho/dev 
+
 - name: update
   apt: update_cache=true
 
@@ -31,6 +34,9 @@
     - libexpat-dev
     - libncurses-dev
     - zlib1g-dev
+
+    - python-software-properties 
+    - software-properties-common
 
     - libpcre3 
     - libpcre3-dev
@@ -66,7 +72,7 @@
 
 - name: Update node
   command: n node 0.12.1
-
+  sudo: no
 
 # This is an example of how to gather information from the machine. We
 # run a command with the "shell" module and register the result into the
@@ -87,26 +93,27 @@
   # value registered previously within the "default_shell" variable.
   when: default_shell.stdout.find('/usr/bin/zsh') == -1
 
-# - name: Install Oh-my-zsh
-#   command: git clone git://github.com/robbyrussell/oh-my-zsh.git /home/evgeniy/.oh-my-zsh
+- name: Install Oh-my-zsh
+  command: git clone git://github.com/robbyrussell/oh-my-zsh.git /home/evgeniy/.oh-my-zsh
+  sudo: no
 
 # - name: Configure Oh-my-zsh
 #   command: cp /home/evgeniy/.oh-my-zsh/templates/zshrc.zsh-template /home/evgeniy/.zshrc
 
-# - name: Compaudit config
-#   command: compaudit | xargs chmod g-w
+- name: Compaudit config
+  command: compaudit | xargs chmod g-w
 
-# - name: Load dotfiles
-#   git: >
-#        repo=git@bitbucket.org:evgeniy_kazakov/dotfiles.git 
-#        dest=/home/evgeniy/dotfiles
-#        accept_hostkey=yes
-#   sudo: no
-
+- name: Load dotfiles
+  git: >
+       repo=git@bitbucket.org:evgeniy_kazakov/dotfiles.git 
+       dest=/home/evgeniy/dotfiles
+       accept_hostkey=yes
+  sudo: no
 
 - name: Get dotfiles
   shell: 'ls -A /home/evgeniy/dotfiles'
   register: dotfiles
+  sudo: no
 
 - name: Symlink dotfiles
   command: ln -sfF /home/evgeniy/dotfiles/{{ item }} /home/evgeniy/
