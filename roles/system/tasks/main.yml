@@ -61,6 +61,7 @@
     # - pidgin-otr
     # - virtualbox-qt
     # - synaptic
+    # - guake
 
   sudo: true
 
