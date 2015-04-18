@@ -108,6 +108,7 @@
   git: >
         repo=git://github.com/robbyrussell/oh-my-zsh.git 
         dest=/home/evgeniy/.oh-my-zsh
+        accept_hostkey=yes
         update=yes
   sudo: no
 
