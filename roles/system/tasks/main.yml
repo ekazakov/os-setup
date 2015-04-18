@@ -97,11 +97,11 @@
   sudo: no
 
 # Now, we want to set zsh as the default shell, unless it is already the default one
-- name: make zsh default
-  command: chsh -s /usr/bin/zsh 
+# - name: make zsh default
+  # command: chsh -s /usr/bin/zsh 
   # This task will run only when the following is true. In here, we check the
   # value registered previously within the "default_shell" variable.
-  when: default_shell.stdout.find('/usr/bin/zsh') == -1
+  # when: default_shell.stdout.find('/usr/bin/zsh') == -1
 
 
 - name: Install Oh-my-zsh
@@ -112,6 +112,9 @@
         update=yes
   sudo: no
 
+- name: Set zsh as default shell
+  user: name=evgeniy shell=/usr/bin/zsh
+  
 # - name: Configure Oh-my-zsh
 #   command: cp /home/evgeniy/.oh-my-zsh/templates/zshrc.zsh-template /home/evgeniy/.zshrc
 
