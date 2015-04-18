@@ -96,18 +96,26 @@
 # - name: Compaudit config
 #   command: compaudit | xargs chmod g-w
 
-- name: Load dotfiles
-  git: >
-       repo=git@bitbucket.org:evgeniy_kazakov/dotfiles.git 
-       dest=/home/evgeniy/dotfiles
-       accept_hostkey=yes
-  sudo: no
-# key_file=/home/evgeniy/.ssh/id_rsa.pub
+# - name: Load dotfiles
+#   git: >
+#        repo=git@bitbucket.org:evgeniy_kazakov/dotfiles.git 
+#        dest=/home/evgeniy/dotfiles
+#        accept_hostkey=yes
+#   sudo: no
+
 
 - name: Get dotfiles
   shell: 'ls -A /home/evgeniy/dotfiles'
   register: dotfiles
 
 - name: Symlink dotfiles
-  command: ln -s {{ item }} /home/evgeniy/
-  with_items: dotfiles.stdout_lines
+  command: ln -sfF /home/evgeniy/dotfiles/{{ item }} /home/evgeniy/
+  with_items: 
+    - .gitignore_global
+    - .gitconfig
+    - .emacs.d
+    - .tmux.conf
+    - .tmuxinator
+    - .zshrc
+    - .zshlogin 
+  sudo: no
