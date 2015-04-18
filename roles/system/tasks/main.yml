@@ -112,12 +112,14 @@
 
 - name: Compaudit config
   command: compaudit | xargs chmod g-w
+  ignore_errors: yes
 
 - name: Load dotfiles
   git: >
        repo=git@bitbucket.org:evgeniy_kazakov/dotfiles.git 
        dest=/home/evgeniy/dotfiles
        accept_hostkey=yes
+       key_file=/home/evgeniy/.ssh/id_rsa
   sudo: no
 
 - name: Get dotfiles
