@@ -80,19 +80,34 @@
   changed_when: False
   sudo: no
 
-# Now, we want to set zsh as the default shell, unless it is already the default
-# one.
+# Now, we want to set zsh as the default shell, unless it is already the default one
 - name: make zsh default
   command: chsh -s /usr/bin/zsh 
   # This task will run only when the following is true. In here, we check the
   # value registered previously within the "default_shell" variable.
   when: default_shell.stdout.find('/usr/bin/zsh') == -1
 
-- name: Install Oh-my-zsh
-  command: git clone git://github.com/robbyrussell/oh-my-zsh.git /home/evgeniy/.oh-my-zsh
+# - name: Install Oh-my-zsh
+#   command: git clone git://github.com/robbyrussell/oh-my-zsh.git /home/evgeniy/.oh-my-zsh
 
-- name: Configure Oh-my-zsh
-  command: cp /home/evgeniy/.oh-my-zsh/templates/zshrc.zsh-template /home/evgeniy/.zshrc
+# - name: Configure Oh-my-zsh
+#   command: cp /home/evgeniy/.oh-my-zsh/templates/zshrc.zsh-template /home/evgeniy/.zshrc
 
-- name: Compaudit config
-  command: compaudit | xargs chmod g-w
+# - name: Compaudit config
+#   command: compaudit | xargs chmod g-w
+
+- name: Load dotfiles
+  git: >
+       repo=git@bitbucket.org:evgeniy_kazakov/dotfiles.git 
+       dest=/home/evgeniy/dotfiles
+       accept_hostkey=yes
+  sudo: no
+# key_file=/home/evgeniy/.ssh/id_rsa.pub
+
+- name: Get dotfiles
+  shell: 'ls -A /home/evgeniy/dotfiles'
+  register: dotfiles
+
+- name: Symlink dotfiles
+  command: ln -s {{ item }} /home/evgeniy/
+  with_items: dotfiles.stdout_lines
