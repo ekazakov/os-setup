@@ -53,6 +53,15 @@
     - npm
     - emacs
 
+    # Apps
+    # - sublime-text
+    # - compizconfig-settings-manager
+    # - unity-tweak-tool
+    # - nautilus-dropbox
+    # - pidgin-otr
+    # - virtualbox-qt
+    # - synaptic
+
   sudo: true
 
 - name: Tmuxinator
