@@ -105,7 +105,10 @@
   sudo: no
 
 - name: Install Oh-my-zsh
-  command: git clone git://github.com/robbyrussell/oh-my-zsh.git /home/evgeniy/.oh-my-zsh
+  git: >
+        repo=git://github.com/robbyrussell/oh-my-zsh.git 
+        dest=/home/evgeniy/.oh-my-zsh
+        update=yes
   sudo: no
 
 # - name: Configure Oh-my-zsh
@@ -121,6 +124,7 @@
        dest=/home/evgeniy/dotfiles
        accept_hostkey=yes
        key_file=/home/evgeniy/.ssh/id_rsa
+       update=yes
   sudo: no
 
 - name: Get dotfiles
