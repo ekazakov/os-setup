@@ -1,19 +1,22 @@
-# Run ansible 'ansible-playbook -K -i inventory playbook.yml'
+# Run ansible 'ansible-playbook -K -i inventory playbook.yml --tags 'debug' --extra-vars "usr=evgeniy"'
 
 # fresh ansible installation
 # sudo add-apt-repository ppa:rquillo/ansible
 # sudo apt-get update
 # sudo apt-get install ansible
-- name: a play that runs entirely on the ansible host
+- name: System provisioning
   hosts: localhost
   connection: local
-
-  user: evgeniy
   sudo: true
 
  # additional variables
   vars:
-    user: evgeniy
+    user_name: "{{ user }}"
+    is_mac_os: "{{ ansible_distribution == 'MacOSX'}}"
+    is_ubuntu: "{{ ansible_distribution == 'Ubuntu'}}"
+    home_path: "{{ ansible_env.HOME }}"
+
+  remote_user: $user_name
 
   # roles are a way to group tasks; they will run in the sequence determined here
   roles:

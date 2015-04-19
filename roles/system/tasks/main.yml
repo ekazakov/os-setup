@@ -4,9 +4,11 @@
 # also have a `name`, which will be displayed while running the task to give a
 # better description of the running task.
 
+- include: debug.yml tags=debug
 - include: base-install.yml tags=base
 - include: node.yml tags=node
 - include: zsh.yml tags=zsh
 - include: dotfiles.yml tags=dotfiles
+
 
 
