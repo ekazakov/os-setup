@@ -1,5 +1,8 @@
 # Run ansible 'ansible-playbook -K -i inventory playbook.yml --tags 'debug' --extra-vars "usr=evgeniy"'
 
+# TODO: fix groups https://github.com/weareinteractive/ansible-users-oh-my-zsh/blob/master/tasks/config.yml
+# TODO: fix home path to ~{{user_name}}
+
 # fresh ansible installation
 # sudo add-apt-repository ppa:rquillo/ansible
 # sudo apt-get update
