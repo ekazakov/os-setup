@@ -1,0 +1,41 @@
+---
+
+# Node and packages
+
+- name: install
+  apt: pkg={{ item }} #update_cache=true
+  with_items:
+    - nodejs
+    - nodejs-legacy
+    - npm
+  sudo: true
+
+  # for global npm install without sudo
+- name: Configure global npm install without sudo
+  command: chown -hR evgeniy:evgeniy /usr/local/
+
+- name: Update npm
+  command: npm update -g npm
+
+- name: Install n (node version manager)
+  npm: name={{ item }} global=yes
+  with_items:
+    - bower
+    - coffee-script
+    - gh
+    - grunt-cli
+    - gulp
+    - httpster
+    - jshint
+    - jsxhint
+    - karma
+    - n
+    - node-inspector
+    - nodemon
+    - phantomjs
+    - tern
+    - yo
+
+- name: Update node
+  command: n node 0.12.1
+  sudo: no

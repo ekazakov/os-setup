@@ -1,0 +1,27 @@
+---
+
+- name: Load dotfiles
+  git: >
+       repo=git@bitbucket.org:evgeniy_kazakov/dotfiles.git 
+       dest=/home/evgeniy/dotfiles
+       accept_hostkey=yes
+       key_file=/home/evgeniy/.ssh/id_rsa
+  sudo: no
+
+# TODO: set owner to user
+- name: Get dotfiles
+  shell: 'ls -A /home/evgeniy/dotfiles'
+  register: dotfiles
+  sudo: no
+
+- name: Symlink dotfiles
+  command: ln -sfF /home/evgeniy/dotfiles/{{ item }} /home/evgeniy/
+  with_items: 
+    - .gitignore_global
+    - .gitconfig
+    - .emacs.d
+    - .tmux.conf
+    - .tmuxinator
+    - .zshrc
+    - .zshlogin 
+  sudo: no

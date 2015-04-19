@@ -1,0 +1,27 @@
+---
+
+- name: install
+  apt: pkg={{ item }} #update_cache=true
+  with_items:
+    - sublime-text
+    - compizconfig-settings-manager
+    - unity-tweak-tool
+    - nautilus-dropbox
+    - pidgin-otr
+    - virtualbox-qt
+    - synaptic
+    - guake
+    - nginx 
+    - silversearcher-ag
+    - markdown  
+    - gettext       
+    - editorconfig      
+    - emacs
+    - wget
+    - tmux
+
+  sudo: yes
+
+- name: Tmuxinator
+  gem: name=tmuxinator
+  sudo: yes
