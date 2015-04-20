@@ -7,7 +7,7 @@
 - include: debug.yml tags=debug
 
 - include: base-install.yml tags=base
-  when: '{{ is_ubuntu }}'
+  when: is_ubuntu
 
 - include: node.yml tags=node
 
@@ -17,5 +17,5 @@
 
 - include: dotfiles.yml tags=dotfiles
 
-- include: apps.yml
+- include: apps.yml tags=apps
 
