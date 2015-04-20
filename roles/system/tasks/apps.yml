@@ -1,7 +1,7 @@
 ---
 
-- name: install
-  apt: pkg={{ item }} #update_cache=true
+- name: Install apps
+  apt: pkg={{ item }} update_cache=true
   with_items:
     - sublime-text
     - compizconfig-settings-manager
@@ -19,8 +19,8 @@
     - emacs
     - wget
     - tmux
-
   sudo: yes
+  when: {{ is_ubuntu }}
 
 - name: Tmuxinator
   gem: name=tmuxinator
