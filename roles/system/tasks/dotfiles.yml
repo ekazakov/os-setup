@@ -3,19 +3,18 @@
 - name: Load dotfiles
   git: >
        repo=git@bitbucket.org:evgeniy_kazakov/dotfiles.git 
-       dest=/home/evgeniy/dotfiles
+       dest=~{{user_name}}/dotfiles
        accept_hostkey=yes
-       key_file=/home/evgeniy/.ssh/id_rsa
+       key_file=~{{user_name}}/.ssh/id_rsa
   sudo: no
 
-# TODO: set owner to user
 - name: Get dotfiles
-  shell: 'ls -A /home/evgeniy/dotfiles'
+  shell: 'ls -A ~{{user_name}}/dotfiles'
   register: dotfiles
   sudo: no
 
 - name: Symlink dotfiles
-  command: ln -sfF /home/evgeniy/dotfiles/{{ item }} /home/evgeniy/
+  command: ln -sfF ~{{user_name}}/dotfiles/{{ item }} ~{{user_name}}/
   with_items: 
     - .gitignore_global
     - .gitconfig
@@ -25,3 +24,10 @@
     - .zshrc
     - .zshlogin 
   sudo: no
+
+- name: Set dofiles owner
+  file: >
+        path=~{{user_name}}/dofiles 
+        owner={{user_name}}
+        group={{user_name}}
+        recurse=yes 

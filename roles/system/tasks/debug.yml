@@ -1,7 +1,15 @@
 ---
 
 - debug: msg='Debug info'
-- debug: msg='Hello {{user_name}}!'
+
+- debug: msg="Hello {{user_name}}!"
+
 - debug: msg='Home path is - {{ home_path }}'
+
 - debug: msg='Is Mac - {{is_mac_os}}, Is Ubuntu - {{ is_ubuntu }}'
+
 - debug: msg='System is - {{ ansible_distribution }}'
+
+
+
+# - debug: msg='zsh path is - {{ zsh_path.stdout }}' 

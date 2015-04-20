@@ -3,27 +3,46 @@
 - name: Install zsh
   apt: pkg=zsh
 
-- name: zsh facts
-  shell: 'echo $SHELL'
-  register: default_shell
-  # changed when determines when will this task be considered changed when running
-  # ansible. In this case, we want it to always be false, as we are just
-  # retrieving information.
-  changed_when: False
-  sudo: no
+# - name: zsh facts
+#   shell: 'echo $SHELL'
+#   register: default_shell
+#   # changed when determines when will this task be considered changed when running
+#   # ansible. In this case, we want it to always be false, as we are just
+#   # retrieving information.
+#   changed_when: False
+#   sudo: no
+
+- name: Which zsh
+  command: which zsh
+  register: zsh_path
 
 # Now, we want to set zsh as the default shell, unless it is already the default one
-- name: make zsh default
-  command: chsh -s /usr/bin/zsh 
+# - name: make zsh default
+  # command: chsh -s {{ zsh_path.stdout }}
   # This task will run only when the following is true. In here, we check the
   # value registered previously within the "default_shell" variable.
-  when: default_shell.stdout.find('/usr/bin/zsh') == -1
+  # when: default_shell.stdout.find('{{ zsh_path.stdout }}') == -1
 
-# TODO: set owner to user
+- name: Setting default shell
+  user: >
+        name={{ user_name }}
+        shell={{ zsh_path.stdout }}
+
 - name: Install Oh-my-zsh
-  command: git clone git://github.com/robbyrussell/oh-my-zsh.git /home/evgeniy/.oh-my-zsh
+  git: >
+       repo=git://github.com/robbyrussell/oh-my-zsh.git
+       dest='~{{user_name}}/.oh-my-zsh'
+       accept_hostkey=yes
+       key_file='~{{user_name}}/.ssh/id_rsa'
   sudo: no
 
 - name: Compaudit config
   command: compaudit | xargs chmod g-w
   ignore_errors: yes
+
+- name: Set oh-my-zsh owner
+  file: >
+        path='~{{user_name}}/.oh-my-zsh'
+        owner={{user_name}}
+        group={{user_name}}
+        recurse=yes 
