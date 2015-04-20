@@ -27,7 +27,7 @@
 
 - name: Set dofiles owner
   file: >
-        path=~{{user_name}}/dofiles 
+        path=~{{user_name}}/dotfiles 
         owner={{user_name}}
         group={{user_name}}
         recurse=yes 
