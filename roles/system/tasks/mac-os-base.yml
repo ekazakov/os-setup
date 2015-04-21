@@ -5,7 +5,7 @@
   with_items:
     - autoconf
     - automake
-    - caskroom/cask/brew-cask
+    # - caskroom/cask/brew-cask
     - editorconfig
     - gdbm
     - gettext
