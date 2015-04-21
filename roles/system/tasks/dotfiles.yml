@@ -2,7 +2,7 @@
 
 - name: Load dotfiles
   git: >
-       repo=git@bitbucket.org:evgeniy_kazakov/dotfiles.git 
+       repo=git@bitbucket.org:evgeniy_kazakov/dotfiles.git
        dest=~{{user_name}}/dotfiles
        accept_hostkey=yes
        key_file=~{{user_name}}/.ssh/id_rsa
@@ -15,19 +15,20 @@
 
 - name: Symlink dotfiles
   command: ln -sfF ~{{user_name}}/dotfiles/{{ item }} ~{{user_name}}/
-  with_items: 
+  with_items:
     - .gitignore_global
     - .gitconfig
     - .emacs.d
     - .tmux.conf
     - .tmuxinator
     - .zshrc
-    - .zshlogin 
+    - .zshlogin
   sudo: no
 
 - name: Set dofiles owner
   file: >
-        path=~{{user_name}}/dotfiles 
+        path=~{{user_name}}/dotfiles
         owner={{user_name}}
         group={{user_name}}
-        recurse=yes 
+        recurse=yes
+  when: is_ubuntu

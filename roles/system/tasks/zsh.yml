@@ -45,4 +45,5 @@
         path='~{{user_name}}/.oh-my-zsh'
         owner={{user_name}}
         group={{user_name}}
-        recurse=yes 
+        recurse=yes
+  when: is_ubuntu
