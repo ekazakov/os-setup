@@ -23,7 +23,7 @@
   when: is_ubuntu
 
 - name: Install Mac apps
-  command: brew cask install {{ item }}
+  homebrew_cask: name={{ item }}
   with_items:
     - 1password
     - adium
