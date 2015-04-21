@@ -1,7 +1,7 @@
 ---
 
 - name: Update add-apt-repository -y ppa:pi-rho/dev
-  apt_repository: repo=ppa:pi-rho/dev 
+  apt_repository: repo=ppa:pi-rho/dev
 
 - name: update
   apt: update_cache=true
@@ -23,11 +23,12 @@
     - libexpat-dev
     - libncurses-dev
     - zlib1g-dev
-    - python-software-properties 
+    - python-software-properties
     - software-properties-common
-    - libpcre3 
+    - libpcre3
     - libpcre3-dev
     - openssl
+    - zsh
   sudo: yes
 
 - name: install

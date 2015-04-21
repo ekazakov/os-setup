@@ -1,8 +1,5 @@
 ---
 
-- name: Install zsh
-  apt: pkg=zsh
-
 # - name: zsh facts
 #   shell: 'echo $SHELL'
 #   register: default_shell
