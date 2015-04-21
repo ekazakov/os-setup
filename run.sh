@@ -1,0 +1,1 @@
+ansible-playbook -K -i inventory playbook.yml --extra-vars "user=evgeniy"
