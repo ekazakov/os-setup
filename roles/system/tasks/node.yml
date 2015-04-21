@@ -2,14 +2,6 @@
 
 # Node and packages
 
-- name: install
-  apt: pkg={{ item }} #update_cache=true
-  with_items:
-    - nodejs
-    - nodejs-legacy
-    - npm
-  sudo: true
-
   # for global npm install without sudo
 - name: Configure global npm install without sudo
   command: chown -hR {{user_name}}:{{user_name}} /usr/local/
@@ -29,6 +21,7 @@
     - jshint
     - jsxhint
     - karma
+    - karma-cli
     - n
     - node-inspector
     - nodemon
@@ -36,6 +29,12 @@
     - tern
     - yo
     - jscs
+    - webpack
+    - browser-sync
+    - browserify
+    - jsfmt
+    - localtunnel
+    - sinopia
 
 - name: Update node
   command: n node 0.12.1

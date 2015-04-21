@@ -29,3 +29,11 @@
     - libpcre3-dev
     - openssl
   sudo: yes
+
+- name: install
+  apt: pkg={{ item }} #update_cache=true
+  with_items:
+    - nodejs
+    - nodejs-legacy
+    - npm
+  sudo: true
