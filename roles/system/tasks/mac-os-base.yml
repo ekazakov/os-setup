@@ -1,0 +1,32 @@
+---
+
+- name: Install base brew packages
+  homebrew: name={{item}} update_homebrew=yes
+  with_items:
+    - autoconf
+    - automake
+    - brew-cask
+    - editorconfig
+    - emacs
+    - gdbm
+    - gettext
+    - hub
+    - libevent
+    - libyaml
+    - mysql
+    - nginx
+    - node
+    - openconnect
+    - openssl
+    - pcre
+    - pkg-config
+    - python
+    - readline
+    - reattach-to-user-namespace
+    - redis
+    - rename
+    - sqlite
+    - the_silver_searcher
+    - tmux
+    - zsh
+  sudo: no

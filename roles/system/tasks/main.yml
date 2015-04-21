@@ -6,16 +6,14 @@
 
 - include: debug.yml tags=debug
 
-- include: base-install.yml tags=base
+- include: base-install.yml tags=ubuntu
   when: is_ubuntu
 
+- includ: mac-os-base.yml tags=osx
+  when: is_mac_os
+
 - include: node.yml tags=node
-
-
 - include: zsh.yml tags=zsh
-
-
 - include: dotfiles.yml tags=dotfiles
-
 - include: apps.yml tags=apps
 
