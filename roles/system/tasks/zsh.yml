@@ -24,6 +24,11 @@
   user: >
         name={{ user_name }}
         shell={{ zsh_path.stdout }}
+  when: is_ubuntu
+
+- name: Setting default shell
+  command: chsh -s {{ zsh_path.stdout }}
+  when: is_mac_os
 
 - name: Install Oh-my-zsh
   git: >
