@@ -1,6 +1,6 @@
 ---
 
-- name: Install apps
+- name: Install Linux apps
   apt: pkg={{ item }} update_cache=true
   with_items:
     - sublime-text
@@ -11,16 +11,49 @@
     - virtualbox-qt
     - synaptic
     - guake
-    - nginx 
+    - nginx
     - silversearcher-ag
-    - markdown  
-    - gettext       
-    - editorconfig      
+    - markdown
+    - gettext
+    - editorconfig
     - emacs
     - wget
     - tmux
   sudo: yes
   when: is_ubuntu
+
+- name: Install Mac apps
+  command: brew cask install {{ item }}
+  with_items:
+    - 1password
+    - adium
+    - alfred
+    - anki
+    - dropbox
+    - firefox
+    - google-chrome
+    - google-drive
+    - karabiner
+    - libreoffice
+    - mailbox
+    - parallels-desktop
+    - rescuetime
+    - skype
+    - mattr-slate
+    - sourcetree
+    - sublime-text
+    - todoist
+    - totalterminal
+    - transmission
+    - vlc
+    - vagrant
+    - virtualbox
+    - webstorm
+    - ichm
+    # - xscope
+  ignore_errors: true
+  sudo: no
+  when: is_mac_os
 
 - name: Tmuxinator
   gem: name=tmuxinator
