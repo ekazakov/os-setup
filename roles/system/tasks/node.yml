@@ -4,7 +4,7 @@
 
   # for global npm install without sudo
 - name: Configure global npm install without sudo
-  command: chown -hR {{user_name}}:{{user_name}} /usr/local/
+  command: chown -hR {{user_name}}:{{ user_name if is_ubuntu is true else 'admin'}} /usr/local/
 
 - name: Update npm
   command: npm update -g npm
