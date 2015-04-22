@@ -28,6 +28,7 @@
     - libpcre3
     - libpcre3-dev
     - openssl
+    - openjdk-7-jdk
     - zsh
   sudo: yes
 

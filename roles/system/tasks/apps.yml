@@ -19,6 +19,7 @@
     - emacs
     - wget
     - tmux
+    - wine
   sudo: yes
   when: is_ubuntu
 
