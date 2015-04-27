@@ -3,10 +3,10 @@
 - name: Install Linux apps
   apt: pkg={{ item }} update_cache=true
   with_items:
-    - sublime-text
+    # - sublime-text
     - compizconfig-settings-manager
     - unity-tweak-tool
-    - nautilus-dropbox
+    # - nautilus-dropbox
     - pidgin-otr
     - virtualbox-qt
     - synaptic
@@ -19,7 +19,9 @@
     - emacs
     - wget
     - tmux
+    - vagrant
     - wine
+    - skype
   sudo: yes
   when: is_ubuntu
 
@@ -52,6 +54,7 @@
     - virtualbox
     - webstorm
     - ichm
+    - vagrant
     # - xscope
   ignore_errors: true
   sudo: no

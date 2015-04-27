@@ -6,7 +6,7 @@
 
 - include: debug.yml tags=debug
 
-- include: base-install.yml tags=ubuntu
+- include: ubuntu-base.yml tags=ubuntu
   when: is_ubuntu
 
 - include: mac-os-base.yml tags=osx
