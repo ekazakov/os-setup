@@ -29,6 +29,7 @@
     - libpcre3-dev
     - openssl
     - openjdk-7-jdk
+    - nfs-common
     - zsh
   sudo: yes
 
