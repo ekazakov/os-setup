@@ -23,6 +23,7 @@
     - .tmuxinator
     - .zshrc
     - .zshlogin
+    - .slate
   sudo: no
 
 - name: Set dofiles owner
