@@ -21,6 +21,7 @@
     - httpster
     - jshint
     - jsxhint
+    - eslint
     - karma
     - karma-cli
     - n
@@ -38,5 +39,5 @@
     - sinopia
 
 - name: Update node
-  command: n node 0.12.1
+  command: n latest
   sudo: no

@@ -38,6 +38,7 @@
     - google-chrome
     - google-drive
     - karabiner
+    - seil
     - libreoffice
     - mailbox
     - parallels-desktop
@@ -53,6 +54,10 @@
     - vagrant
     - virtualbox
     - webstorm
+    - phpstorm
+    - atom
+    - slack
+    - telegram
     - ichm
     - vagrant
     # - xscope
