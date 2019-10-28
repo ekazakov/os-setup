@@ -11,8 +11,7 @@ set -e
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
-brew tap homebrew/cask-cask
-brew install ansible
+brew cask install ansible
 
 TEMPLATE="
 Host localhost
