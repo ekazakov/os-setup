@@ -2,7 +2,7 @@
 
 - name: Remove old .gitconfig and .gitignore_global if exists
   file:
-    path: "{{ ansible_env.HOME }}"
+    path: "{{ ansible_env.HOME }}/{{ item }}"
     state: absent
   with_items:
     - .gitconfig
