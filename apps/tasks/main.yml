@@ -1,0 +1,13 @@
+---
+
+- name: Install tmux
+  homebre:
+    update_homebrew: yes
+    name: tmux
+    state: present
+
+- name: Create a symbolic link to .tmux.conf
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/.tmux.conf"
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    state: link

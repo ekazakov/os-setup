@@ -24,6 +24,7 @@
   roles:
     - { role: dotfiles }
     - { role: oh-my-zsh }
+    - { role: apps }
 
 
 
