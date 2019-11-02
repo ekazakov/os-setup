@@ -1,7 +1,7 @@
 ---
 
 - name: Install tmux
-  homebre:
+  homebrew:
     update_homebrew: yes
     name: tmux
     state: present
