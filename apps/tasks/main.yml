@@ -1,5 +1,14 @@
 ---
 
+- name: Create a symbolic links for git
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/{{ item }}"
+    state: link
+  with_items:
+    - .gitconfig
+    - .gitignore_global
+
 - name: Install tmux
   homebrew:
     update_homebrew: yes
@@ -11,3 +20,9 @@
     src: "{{ ansible_env.HOME }}/dotfiles/.tmux.conf"
     dest: "{{ ansible_env.HOME }}/.tmux.conf"
     state: link
+
+- name: Install
+  homebrew_cask:
+    name: karabiner-elements
+    state: present
+    install_options: 'debug,appdir=/Applications'
