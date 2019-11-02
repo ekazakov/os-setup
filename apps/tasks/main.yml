@@ -1,5 +1,13 @@
 ---
 
+- name: Remove old .gitconfig and .gitignore_global if exists
+  file:
+    path: "{{ ansible_env.HOME }}"
+    state: absent
+  with_items:
+    - .gitconfig
+    - .gitignore_global
+
 - name: Create a symbolic links for git
   file:
     src: "{{ ansible_env.HOME }}/dotfiles/{{ item }}"
