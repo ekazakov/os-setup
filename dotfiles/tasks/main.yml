@@ -1,4 +1,5 @@
 ---
+
 - name: Clonne dotfiles reop
   git:
     repo: git@bitbucket.org:evgeniy_kazakov/dotfiles.git
