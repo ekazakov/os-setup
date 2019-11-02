@@ -3,7 +3,7 @@
 - name: Check git dotfiles
   stat:
     path: "{{ ansible_env.HOME }}/{{ item }}"
-    register: results
+  register: results
   with_items:
     - .gitconfig
     - .gitignore_global
