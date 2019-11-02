@@ -3,21 +3,21 @@
 - name: Installing oh-my-zsh per user
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh.git
-    dest: "{{ item.home }}/ansible-test/.oh-my-zsh"
+    dest: "{{ item.home }}/.oh-my-zsh"
     update: "{{ users_oh_my_zsh_update }}"
     version: master
   with_items: "{{ users }}"
 
 - name: Unlink old symlinc to .zshrc if exists
   file:
-    path: "{{ item.home }}/ansible-test/.zshrc"
+    path: "{{ item.home }}/.zshrc"
     state: absent
   with_items: "{{ users }}"
 
 - name: Create a symbolic link to .zshrc
   file:
     src: "{{ item.home }}/dotfiles/.zshrc"
-    dest: "{{ item.home }}/ansible-test/.zshrc"
+    dest: "{{ item.home }}/.zshrc"
     state: link
   with_items: "{{ users }}"
 
