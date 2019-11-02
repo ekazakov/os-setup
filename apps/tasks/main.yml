@@ -1,12 +1,22 @@
 ---
 
-- name: Remove old .gitconfig and .gitignore_global if exists
-  file:
+- name: Check git dotfiles
+  stat:
     path: "{{ ansible_env.HOME }}/{{ item }}"
-    state: absent
+    register: results
   with_items:
     - .gitconfig
     - .gitignore_global
+
+- debug:
+    var: results
+#- name: Remove old .gitconfig and .gitignore_global if exists
+#  file:
+#    path: "{{ ansible_env.HOME }}/{{ item }}"
+#    state: absent
+#  with_items:
+#    - .gitconfig
+#    - .gitignore_global
 
 - name: Create a symbolic links for git
   file:
@@ -29,7 +39,7 @@
     dest: "{{ ansible_env.HOME }}/.tmux.conf"
     state: link
 
-- name: Install
+- name: Install karabiner-elements
   homebrew_cask:
     name: karabiner-elements
     state: present
