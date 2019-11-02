@@ -1,0 +1,35 @@
+---
+
+- name: Installing oh-my-zsh per user
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: "{{ item.home }}/ansible-test/.oh-my-zsh"
+    update: "{{ users_oh_my_zsh_update }}"
+    version: master
+  with_items: "{{ users }}"
+
+- name: Unlink old symlinc to .zshrc if exists
+  file:
+    path: "{{ item.home }}/ansible-test/.zshrc"
+    state: absent
+  with_items: "{{ users }}"
+
+- name: Create a symbolic link to .zshrc
+  file:
+    src: "{{ item.home }}/dotfiles/.zshrc"
+    dest: "{{ item.home }}/ansible-test/.zshrc"
+    state: link
+  with_items: "{{ users }}"
+
+#- debug:
+#    msg: "Need update user shell. Current shell is: {{ ansible_env.SHELL }}"
+#  when: ansible_env.SHELL.endswith("/bin/zsh") != True
+
+#- name: Setting default shell per user
+#  user:
+#    name: "{{ item.username }}"
+#    shell: /bin/zsh
+#  with_items: "{{ users }}"
+#  when: ansible_env.SHELL.endswith("/bin/zsh") != True
+
+

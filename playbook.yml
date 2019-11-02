@@ -1,29 +1,29 @@
 # Run ansible 'ansible-playbook -K -i inventory playbook.yml --tags 'debug' --extra-vars "user=evgeniy"'
 
+# ansible-playbook -i inventory playbook.yml
 # TODO: fix groups https://github.com/weareinteractive/ansible-users-oh-my-zsh/blob/master/tasks/config.yml
 # TODO: fix home path to ~{{user_name}}
 
-# fresh ansible installation
-# sudo add-apt-repository ppa:rquillo/ansible
-# sudo apt-get update
-# sudo apt-get install ansible
+
 - name: System provisioning
   hosts: localhost
   connection: local
-  sudo: true
+  gather_facts: True
 
- # additional variables
   vars:
-    user_name: "{{ user }}"
-    is_mac_os: "{{ ansible_distribution == 'MacOSX'}}"
-    is_ubuntu: "{{ ansible_distribution == 'Ubuntu'}}"
-    home_path: "{{ ansible_env.HOME }}"
+    users:
+      - name: Evgeniy
+        username: "{{ ansible_env.USER }}"
+        home: "{{ ansible_env.HOME }}"
 
-  remote_user: $user_name
+  tasks:
+    - debug:
+        msg: "User name: {{ ansible_env.USER }}"
 
   # roles are a way to group tasks; they will run in the sequence determined here
   roles:
-    - system
+    - { role: dotfiles￿ }
+    - { role: oh-my-zsh }
 
 
 
