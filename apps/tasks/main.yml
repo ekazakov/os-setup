@@ -38,9 +38,30 @@
     src: "{{ ansible_env.HOME }}/dotfiles/.tmux.conf"
     dest: "{{ ansible_env.HOME }}/.tmux.conf"
     state: link
+    force: yes
 
 - name: Install karabiner-elements
   homebrew_cask:
     name: karabiner-elements
     state: present
     install_options: 'debug,appdir=/Applications'
+
+- name: Create a symbolic link to karabiner config
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/karabiner"
+    dest: "{{ ansible_env.HOME }}/.config/karabiner"
+    state: link
+    force: yes
+
+- name: Install iterm2
+  homebrew_cask:
+    name: iterm2
+    state: present
+    install_options: 'debug,appdir=/Applications'
+
+- name: Create a symbolic link to iterm2 DynamicProfiles directory
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/DynamicProfiles"
+    dest: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles"
+    state: link
+    force: yes
