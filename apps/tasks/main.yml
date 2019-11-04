@@ -64,6 +64,12 @@
     state: present
     install_options: 'debug,appdir=/Applications'
 
+- name: Create iterm2 config directory
+  file:
+    path: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles"
+    state: directory
+    force: yes
+
 - name: Create a symbolic link to iterm2 DynamicProfiles directory
   file:
     src: "{{ ansible_env.HOME }}/dotfiles/DynamicProfiles"
