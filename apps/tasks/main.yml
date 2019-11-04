@@ -29,7 +29,7 @@
 
 - name: Install tmux
   homebrew:
-    update_homebrew: yes
+#    update_homebrew: yes
     name: tmux
     state: present
 
@@ -46,7 +46,12 @@
     state: present
     install_options: 'debug,appdir=/Applications'
 
-- name: Create a symbolic link to karabiner config
+- name: Remove karabiner default config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/karabiner"
+    state: absent
+
+- name: Create a symbolic link to config in ~/dotfiles/karabiner
   file:
     src: "{{ ansible_env.HOME }}/dotfiles/karabiner"
     dest: "{{ ansible_env.HOME }}/.config/karabiner"
