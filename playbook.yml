@@ -22,10 +22,10 @@
 
   # roles are a way to group tasks; they will run in the sequence determined here
   roles:
-    - { role: dotfiles }
-    - { role: oh-my-zsh }
-    - { role: apps }
-
+#    - { role: dotfiles }
+#    - { role: oh-my-zsh }
+#    - { role: apps }
+     - { role: macos}
 
 
 # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
