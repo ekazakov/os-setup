@@ -78,54 +78,54 @@
     state: link
     force: yes
 
-#- name: Install more cli apps
-#  homebrew:
-#    name: "{{ item }}"
-#    state: present
-#  with_items:
-#    - git
-#    - htop
-#    - git-lfs
-#    - hub
-#    - nginx
-#    - node
-#    - editorconfig
-#    - openconnect
-#    - openssl
-#    - openvpn
-#    - readline
-#    - python
-#    - watchman
-#    - yarn
-#    - wget
-#    - the_silver_searcher
-#    - ipcalc
-#    - reattach-to-user-namespace
-#    - redis
-#    - sqlite
-##    - mas # https://github.com/mas-cli/mas Mac App Store cli
+- name: Install more cli apps
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - git
+    - htop
+    - git-lfs
+    - hub
+    - nginx
+    - node
+    - editorconfig
+    - openconnect
+    - openssl
+    - openvpn
+    - readline
+    - python
+    - watchman
+    - yarn
+    - wget
+    - the_silver_searcher
+    - ipcalc
+    - reattach-to-user-namespace
+    - redis
+    - sqlite
+#    - mas # https://github.com/mas-cli/mas Mac App Store cli
 
-#- name: Install more desktop apps
-#  homebrew_cask:
-#    name: "{{ item }}"
-#    state: present
-#    install_options: 'debug,appdir=/Applications'
-#  with_items:
-##    - webstorm
-#    - sublime-text
-#    - alfred
-##    - skype
-##    - dropbox
-##    - private-internet-access
-##    - sourcetree
-##    - tunnelblick
-##    - zeplin
-##    - docker
-#    - anki
-##   - firefox-developer-edition
-##    - teamviewer
-##    - 4k-video-downloader
-#    - vlc
-##    - vagrant
-##    - ichm
-##    - i
+- name: Install more desktop apps
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    install_options: 'debug,appdir=/Applications'
+  with_items:
+#    - webstorm
+    - sublime-text
+    - alfred
+#    - skype
+#    - dropbox
+#    - private-internet-access
+#    - sourcetree
+#    - tunnelblick
+#    - zeplin
+#    - docker
+    - anki
+#   - firefox-developer-edition
+#    - teamviewer
+#    - 4k-video-downloader
+    - vlc
+#    - vagrant
+#    - ichm
+#    - igetter

@@ -24,8 +24,8 @@
   roles:
 #    - { role: dotfiles }
 #    - { role: oh-my-zsh }
-#    - { role: apps }
-     - { role: macos}
+    - { role: apps }
+    - { role: macos}
 
 
 # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
