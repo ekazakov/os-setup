@@ -1,0 +1,4 @@
+---
+# tasks file for macos
+- name: Setup Mac OS defaults
+  script: setup_macos_defaults.sh

@@ -13,30 +13,11 @@
 - name: Install global node modules
   npm: name={{ item }} global=yes
   with_items:
-    - bower
-    - coffee-script
-    - gh
-    - grunt-cli
-    - gulp
     - httpster
-    - jshint
-    - jsxhint
-    - eslint
-    - karma
-    - karma-cli
     - n
-    - node-inspector
     - nodemon
-    - phantomjs
-    - tern
-    - yo
-    - jscs
-    - webpack
     - browser-sync
-    - browserify
-    - jsfmt
     - localtunnel
-    - sinopia
 
 - name: Update node
   command: n latest

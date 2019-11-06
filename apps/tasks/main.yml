@@ -1,15 +1,15 @@
 ---
 
-- name: Check git dotfiles
-  stat:
-    path: "{{ ansible_env.HOME }}/{{ item }}"
-  register: results
-  with_items:
-    - .gitconfig
-    - .gitignore_global
+#- name: Check git dotfiles
+#  stat:
+#    path: "{{ ansible_env.HOME }}/{{ item }}"
+#  register: results
+#  with_items:
+#    - .gitconfig
+#    - .gitignore_global
 
-- debug:
-    var: results
+#- debug:
+#    var: results
 #- name: Remove old .gitconfig and .gitignore_global if exists
 #  file:
 #    path: "{{ ansible_env.HOME }}/{{ item }}"
@@ -23,6 +23,7 @@
     src: "{{ ansible_env.HOME }}/dotfiles/{{ item }}"
     dest: "{{ ansible_env.HOME }}/{{ item }}"
     state: link
+    force: true
   with_items:
     - .gitconfig
     - .gitignore_global
@@ -66,7 +67,7 @@
 
 - name: Create iterm2 config directory
   file:
-    path: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles"
+    path: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2"
     state: directory
     force: yes
 
@@ -76,3 +77,55 @@
     dest: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles"
     state: link
     force: yes
+
+#- name: Install more cli apps
+#  homebrew:
+#    name: "{{ item }}"
+#    state: present
+#  with_items:
+#    - git
+#    - htop
+#    - git-lfs
+#    - hub
+#    - nginx
+#    - node
+#    - editorconfig
+#    - openconnect
+#    - openssl
+#    - openvpn
+#    - readline
+#    - python
+#    - watchman
+#    - yarn
+#    - wget
+#    - the_silver_searcher
+#    - ipcalc
+#    - reattach-to-user-namespace
+#    - redis
+#    - sqlite
+##    - mas # https://github.com/mas-cli/mas Mac App Store cli
+
+#- name: Install more desktop apps
+#  homebrew_cask:
+#    name: "{{ item }}"
+#    state: present
+#    install_options: 'debug,appdir=/Applications'
+#  with_items:
+##    - webstorm
+#    - sublime-text
+#    - alfred
+##    - skype
+##    - dropbox
+##    - private-internet-access
+##    - sourcetree
+##    - tunnelblick
+##    - zeplin
+##    - docker
+#    - anki
+##   - firefox-developer-edition
+##    - teamviewer
+##    - 4k-video-downloader
+#    - vlc
+##    - vagrant
+##    - ichm
+##    - i
