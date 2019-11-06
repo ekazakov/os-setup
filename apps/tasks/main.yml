@@ -82,7 +82,7 @@
   homebrew:
     name: "{{ item }}"
     state: present
-  with_items:
+  loop:
     - git
     - htop
     - git-lfs
@@ -110,7 +110,7 @@
     name: "{{ item }}"
     state: present
     install_options: 'debug,appdir=/Applications'
-  with_items:
+  loop:
 #    - webstorm
     - sublime-text
     - alfred
@@ -129,3 +129,6 @@
 #    - vagrant
 #    - ichm
 #    - igetter
+#    - dictionaries
+#    - zoomus
+#    - istat-menus
