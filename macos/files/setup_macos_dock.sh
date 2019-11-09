@@ -7,7 +7,6 @@ dockutil --no-restart --add "/Applications/Reminders.app" # Default app
 dockutil --no-restart --add "/Applications/Notes.app" # Default app
 dockutil --no-restart --add "/Applications/Evernote.app" # MAS
 dockutil --no-restart --add "/Applications/Slack.app" # MAS
-#dockutil --no-restart --add "/Applications/1Password 7.app" # Custom download
 dockutil --no-restart --add "/Applications/iTerm.app"
 dockutil --no-restart --add "/Applications/System Preferences.app" # Default app
 dockutil --no-restart --add "/Applications/App Store.app" # Default app
