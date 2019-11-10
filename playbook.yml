@@ -1,9 +1,4 @@
-# Run ansible 'ansible-playbook -K -i inventory playbook.yml --tags 'debug' --extra-vars "user=evgeniy"'
-
-# ansible-playbook -i inventory playbook.yml
-# TODO: fix groups https://github.com/weareinteractive/ansible-users-oh-my-zsh/blob/master/tasks/config.yml
-# TODO: fix home path to ~{{user_name}}
-
+# Run ansible 'ansible-playbook -K -i inventory playbook.yml
 
 - name: System provisioning
   hosts: localhost
@@ -22,10 +17,7 @@
 
   # roles are a way to group tasks; they will run in the sequence determined here
   roles:
-#    - { role: dotfiles }
-#    - { role: oh-my-zsh }
-#    - { role: apps }
+    - { role: dotfiles }
+    - { role: oh-my-zsh }
+    - { role: apps }
     - { role: macos}
-
-
-# ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"

@@ -112,9 +112,9 @@
     state: present
     install_options: 'debug,appdir=/Applications'
   loop:
-#    - webstorm
+    - webstorm
     - sublime-text
-    - alfred
+#    - alfred
 #    - skype
 #    - dropbox
 #    - private-internet-access
