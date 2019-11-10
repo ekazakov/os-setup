@@ -5,7 +5,9 @@
 
 - name: Before Mac OS defaults setup
   script: before_setup.sh
-  sudo: yes
+  become: yes
+#  become_user: evgeniy
+  become_method: sudo
 
 - name: Mac OS system defaults setup
   script: "{{ item }}"
@@ -24,7 +26,9 @@
     - "system/safari.sh"
     - "system/spotlight.sh"
     - "system/time_machine.sh"
-  sudo: yes
+  become: yes
+#  become_user: evgeniy
+  become_method: sudo
 
 #- name: Mac OS apps defaults setup
 #  script: "{{ item }}"
@@ -37,7 +41,9 @@
 
 - name: After Mac OS defaults setup
   script: after_setup.sh
-  sudo: yes
+  become: yes
+#  become_user: evgeniy
+  become_method: sudo
 
 - name: Setup Dock
   script: setup_macos_dock.sh
