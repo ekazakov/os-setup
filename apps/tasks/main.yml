@@ -103,6 +103,7 @@
     - reattach-to-user-namespace
     - redis
     - sqlite
+    - dockutil
 #    - mas # https://github.com/mas-cli/mas Mac App Store cli
 
 - name: Install more desktop apps
