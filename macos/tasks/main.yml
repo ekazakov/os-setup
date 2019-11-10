@@ -27,17 +27,18 @@
     - "system/spotlight.sh"
     - "system/time_machine.sh"
   become: yes
-#  become_user: evgeniy
   become_method: sudo
 
-#- name: Mac OS apps defaults setup
-#  script: "{{ item }}"
-#  with_items:
-#    - "apps/chrome.sh"
-#    - "apps/moom.sh"
-#    - "apps/opera.sh"
-#    - "apps/terminal_and_iterm2.sh"
-#    - "apps/webstorm.sh"
+- name: Mac OS apps defaults setup
+  script: "{{ item }}"
+  with_items:
+    - "apps/chrome.sh"
+    - "apps/moom.sh"
+    - "apps/opera.sh"
+    - "apps/terminal_and_iterm2.sh"
+    - "apps/webstorm.sh"
+  become: yes
+  become_method: sudo
 
 - name: After Mac OS defaults setup
   script: after_setup.sh
