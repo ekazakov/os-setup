@@ -1,7 +1,31 @@
 ---
 # tasks file for macos
-- name: Setup Mac OS defaults
-  script: setup_macos_defaults.sh
+#- name: Setup Mac OS defaults
+#  script: setup_macos_defaults.sh
+
+- name: Before Mac OS defaults setup
+  script: before_setup.sh
+
+- name: Mac OS system defaults setup
+  script: {{ item }}
+  with_items:
+    - system/general.sh
+    - system/screen.sh
+    - system/energy_saving.sh
+    - system/input_devices.sh
+    - system/disk_utility_and_other.sh
+    - system/dock_dashboard_hot_corners.sh
+    - system/finder.sh
+    - system/mac_app_store.sh
+    - system/activity_monitor.sh
+    - system/messages.sh
+    - system/photos.sh
+    - system/safari.sh
+    - system/spotlight.sh
+    - system/time_machine.sh
+
+- name: After Mac OS defaults setup
+  script: after_setup.sh
 
 - name: Setup Dock
   script: setup_macos_dock.sh
