@@ -4,19 +4,33 @@
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
 
-# Trackpad: enable tap to click for this user and for the login screen
-#defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-#defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-#defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
-# Trackpad: map bottom right corner to right-click
-#defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-#defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-#defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-#defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
-
-# Disable “natural” (Lion-style) scrolling
-#defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+  defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -int 0
+  defaults write com.apple.AppleMultitouchTrackpad Clicking -int 1
+  defaults write com.apple.AppleMultitouchTrackpad DragLock -int 0
+  defaults write com.apple.AppleMultitouchTrackpad Dragging -int 0
+  defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 1
+  defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -int 1
+  defaults write com.apple.AppleMultitouchTrackpad SecondClickThreshold -int 1
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 0
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadFiveFingerPinchGesture -int 2
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerHorizSwipeGesture -int 2
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerPinchGesture -int 2
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerVertSwipeGesture -int 2
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadHandResting -int 1
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadHorizScroll -int 1
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadMomentumScroll -int 1
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadPinch -int 1
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -int 1
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadRotate -int 1
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadScroll -int 1
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -int 0
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 2
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 0
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerDoubleTapGesture -int 1
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
+  defaults write com.apple.AppleMultitouchTrackpad USBMouseStopsTrackpad -int 0
+  defaults write com.apple.AppleMultitouchTrackpad UserPreferences -int 1
 
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
@@ -27,7 +41,7 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+defaults write com.apple.AppleMultitouchTrackpad HIDScrollZoomModifierMask -int 262144
 # Follow the keyboard focus while zoomed in
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
