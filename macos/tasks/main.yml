@@ -9,25 +9,25 @@
 #  become_user: evgeniy
   become_method: sudo
 
-- name: Mac OS system defaults setup
-  script: "{{ item }}"
-  with_items:
-    - "system/general.sh"
-    - "system/screen.sh"
-    - "system/energy_saving.sh"
-    - "system/input_devices.sh"
-    - "system/disk_utility_and_other.sh"
-    - "system/dock_dashboard_hot_corners.sh"
-    - "system/finder.sh"
-    - "system/mac_app_store.sh"
-    - "system/activity_monitor.sh"
-    - "system/messages.sh"
-    - "system/photos.sh"
-    - "system/safari.sh"
-    - "system/spotlight.sh"
-    - "system/time_machine.sh"
-  become: yes
-  become_method: sudo
+#- name: Mac OS system defaults setup
+#  script: "{{ item }}"
+#  with_items:
+#    - "system/general.sh"
+#    - "system/screen.sh"
+#    - "system/energy_saving.sh"
+#    - "system/input_devices.sh"
+#    - "system/disk_utility_and_other.sh"
+#    - "system/dock_dashboard_hot_corners.sh"
+#    - "system/finder.sh"
+#    - "system/mac_app_store.sh"
+#    - "system/activity_monitor.sh"
+#    - "system/messages.sh"
+#    - "system/photos.sh"
+#    - "system/safari.sh"
+#    - "system/spotlight.sh"
+#    - "system/time_machine.sh"
+#  become: yes
+#  become_method: sudo
 
 - name: Mac OS apps defaults setup
   script: "{{ item }}"
