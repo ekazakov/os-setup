@@ -28,19 +28,6 @@
     - .gitconfig
     - .gitignore_global
 
-- name: Install tmux
-  homebrew:
-#    update_homebrew: yes
-    name: tmux
-    state: present
-
-- name: Create a symbolic link to .tmux.conf
-  file:
-    src: "{{ ansible_env.HOME }}/dotfiles/.tmux.conf"
-    dest: "{{ ansible_env.HOME }}/.tmux.conf"
-    state: link
-    force: yes
-
 - name: Install karabiner-elements
   homebrew_cask:
     name: karabiner-elements

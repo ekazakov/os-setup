@@ -1,0 +1,30 @@
+---
+
+- name: Install tmux
+  homebrew:
+    name: tmux
+    state: present
+
+#  https://github.com/gpakosz/.tmux.git
+- name: Installing oh-my-tmux
+  git:
+    repo: https://github.com/gpakosz/.tmux.git
+    dest: "{{ item.home }}/.tmux"
+    update: yes
+    version: master
+  with_items: "{{ users }}"
+
+- name: Create a symbolic link to .tmux.conf
+  file:
+    src: "{{ ansible_env.HOME }}/.tmux/.tmux.conf"
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    state: link
+    force: yes
+
+
+- name: Create a symbolic link to .tmux.conf.local
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/.tmux.conf"
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    state: link
+    force: yes
