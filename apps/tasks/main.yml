@@ -71,6 +71,7 @@
     state: present
   loop:
     - git
+    - jq
     - htop
     - git-lfs
     - hub
@@ -91,7 +92,7 @@
     - redis
     - sqlite
     - dockutil
-#    - mas # https://github.com/mas-cli/mas Mac App Store cli
+    - python3
 
 - name: Install more desktop apps
   homebrew_cask:
@@ -101,22 +102,22 @@
   loop:
     - webstorm
     - sublime-text
-#    - alfred
-#    - skype
-#    - dropbox
-#    - private-internet-access
-#    - sourcetree
-#    - tunnelblick
-#    - zeplin
-#    - docker
+    - alfred
+    - skype
+    - dropbox
+    - private-internet-access
+    - sourcetree
+    - tunnelblick
+    - zeplin
+    - docker
     - anki
 #   - firefox-developer-edition
-#    - teamviewer
-#    - 4k-video-downloader
+    - teamviewer
+    - 4k-video-downloader
     - vlc
-#    - vagrant
-#    - ichm
-#    - igetter
-#    - dictionaries
-#    - zoomus
+    - vagrant
+    - ichm
+    - igetter
+    # - dictionaries
+    - zoomus
 #    - istat-menus
