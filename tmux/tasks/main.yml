@@ -24,7 +24,7 @@
 
 - name: Create a symbolic link to .tmux.conf.local
   file:
-    src: "{{ ansible_env.HOME }}/dotfiles/.tmux.conf"
-    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    src: "{{ ansible_env.HOME }}/dotfiles/.tmux.conf.local"
+    dest: "{{ ansible_env.HOME }}/.tmux.conf.local"
     state: link
     force: yes
