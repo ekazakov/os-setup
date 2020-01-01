@@ -29,9 +29,9 @@
     update: "{{ users_oh_my_zsh_update }}"
     version: master
   with_items:
-    - { name: "zsh-autosuggestions", repo: "git@github.com:zsh-users/zsh-autosuggestions.git", home: "{{ users.home }}" }
-    - { name: "sh-syntax-highlighting", repo: "git@github.com:zsh-users/zsh-syntax-highlighting.git", home: "{{ users.home }}" }
-    - { name: "sh-history-substring-search", repo: "git@github.com:zsh-users/zsh-history-substring-search.git", home: "{{ users.home }}" }
+    - { name: "zsh-autosuggestions", repo: "git@github.com:zsh-users/zsh-autosuggestions.git", home: "{{ ansible_env.HOME }}" }
+    - { name: "sh-syntax-highlighting", repo: "git@github.com:zsh-users/zsh-syntax-highlighting.git", home: "{{ ansible_env.HOME }}" }
+    - { name: "sh-history-substring-search", repo: "git@github.com:zsh-users/zsh-history-substring-search.git", home: "{{ ansible_env.HOME }}" }
 
 - name: Installing zsh theme "pure"
   git:
