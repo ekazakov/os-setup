@@ -34,6 +34,11 @@
     state: present
     install_options: 'debug,appdir=/Applications'
 
+- name: Ensures "~/.config" dir exists
+  file: 
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory    
+
 - name: Remove karabiner default config directory
   file:
     path: "{{ ansible_env.HOME }}/.config/karabiner"
