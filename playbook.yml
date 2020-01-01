@@ -20,4 +20,4 @@
     - { role: dotfiles }
     - { role: oh-my-zsh }
     - { role: apps }
-    - { role: macos}
+    - { role: macos }

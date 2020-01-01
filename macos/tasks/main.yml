@@ -35,5 +35,5 @@
   script: after_setup.sh
   become: yes
 
-- name: Setup Dock
-  script: setup_macos_dock.sh
+# - name: Setup Dock
+#   script: setup_macos_dock.sh
