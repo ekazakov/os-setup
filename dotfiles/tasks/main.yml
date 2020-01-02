@@ -6,3 +6,9 @@
     dest: "{{ ansible_env.HOME }}/dotfiles"
     update: True
     version: master
+
+- name: Copy git global user config
+    copy:
+      src: "{{ ansible_env.HOME }}/dotfiles/user.gitconfig.tmpl"
+      dest: "{{ ansible_env.HOME }}/.user.gitconfig"
+      force: yes
