@@ -120,3 +120,7 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Activate audible chime when power cable is plugged in.
 defaults write com.apple.PowerChime ChimeOnAllHardware -bool true; open /System/Library/CoreServices/PowerChime.app
+
+# KeyRepeat settings
+defaults write -g InitialKeyRepeat -int 25
+defaults write -g KeyRepeat -int 1
