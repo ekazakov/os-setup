@@ -51,11 +51,11 @@
     state: link
     force: yes
 
-- name: Install iterm2
-  homebrew_cask:
-    name: iterm2
-    state: present
-    install_options: 'debug,appdir=/Applications'
+#- name: Install iterm3
+#  homebrew_cask:
+#    name: iterm3
+#    state: present
+#    install_options: 'debug,appdir=/Applications'
 
 - name: Create iterm2 config directory
   file:
@@ -116,13 +116,13 @@
     - zeplin
     - docker
     - anki
-#   - firefox-developer-edition
+    - firefox-developer-edition
     - teamviewer
     - 4k-video-downloader
     - vlc
     - vagrant
     - ichm
     - igetter
-    # - dictionaries
+    - dictionaries
     - zoomus
 #    - istat-menus
