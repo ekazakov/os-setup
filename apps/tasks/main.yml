@@ -35,9 +35,9 @@
     install_options: 'debug,appdir=/Applications'
 
 - name: Ensures "~/.config" dir exists
-  file: 
+  file:
     path: "{{ ansible_env.HOME }}/.config"
-    state: directory    
+    state: directory
 
 - name: Remove karabiner default config directory
   file:
@@ -89,15 +89,27 @@
     - readline
     - python
     - watchman
-    - yarn
+    - pnpm
     - wget
     - the_silver_searcher
     - ipcalc
     - reattach-to-user-namespace
+    - colima
     - redis
     - sqlite
     - dockutil
     - python3
+    - podman
+    - vagrant
+    - minikube
+    - tree
+    - mkcert
+    - hey
+    - wrk
+    - npkill
+    - relabel
+    - delta
+    - tig
 
 - name: Install more desktop apps
   homebrew_cask:
@@ -105,24 +117,20 @@
     state: present
     install_options: 'debug,appdir=/Applications'
   loop:
-    - webstorm
+    - arc
+    - jetbrains-toolbox
     - sublime-text
-    - alfred
+    - visual-studio-code
+    - raycast
     - skype
     - dropbox
     - private-internet-access
-    - sourcetree
     - tunnelblick
-    - zeplin
-    - docker
-    - anki
     - firefox-developer-edition
-    - teamviewer
+    - anydesk
     - 4k-video-downloader
     - vlc
-    - vagrant
-    - ichm
-    - igetter
+    - folx
     - dictionaries
     - zoomus
-#    - istat-menus
+

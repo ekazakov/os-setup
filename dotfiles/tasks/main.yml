@@ -2,7 +2,7 @@
 
 - name: Clonne dotfiles repository
   git:
-    repo: git@bitbucket.org:evgeniy_kazakov/dotfiles.git
+    repo: git@github.com:ekazakov/dotfiles.git
     dest: "{{ ansible_env.HOME }}/dotfiles"
     update: True
     version: master
