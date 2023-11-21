@@ -118,12 +118,14 @@
     install_options: 'debug,appdir=/Applications'
   loop:
     - arc
+    - google-chrome
     - jetbrains-toolbox
     - sublime-text
     - visual-studio-code
     - raycast
     - skype
     - dropbox
+    - deepl
     - private-internet-access
     - tunnelblick
     - firefox-developer-edition
