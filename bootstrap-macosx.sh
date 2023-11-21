@@ -9,7 +9,7 @@ trap 'error_message $LINENO' ERR
 set -o pipefail
 set -e
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+ruby -e "$(curl -fsSLhttps://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew doctor
 brew install ansible
 
