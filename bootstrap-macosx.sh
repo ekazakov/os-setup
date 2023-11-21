@@ -9,7 +9,7 @@ trap 'error_message $LINENO' ERR
 set -o pipefail
 set -e
 
-ruby -e "$(curl -fsSLhttps://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew doctor
 brew install ansible
 
@@ -36,8 +36,8 @@ printf "\n******** Run ssh-agent\n"
 eval "$(ssh-agent -s)"
 
 printf "\n******** Add keys to ssh-agent\n"
-ssh-add -K ~/.ssh/github_rsa
-ssh-add -K ~/.ssh/bitbucket_rsa
+ssh-add  --apple-use-keychain ~/.ssh/github_rsa
+ssh-add  --apple-use-keychain ~/.ssh/bitbucket_rsa
 
 printf "\n******** Create user ssh config\n"
 
