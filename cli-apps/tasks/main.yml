@@ -1,4 +1,5 @@
 ---
+# SEE more cli apps https://github.com/agarrharr/awesome-cli-apps#macos
 
 #- name: Check git dotfiles
 #  stat:
@@ -18,11 +19,9 @@
 #    - .gitconfig
 #    - .gitignore_global
 
-- name: Install karabiner-elements
-  homebrew_cask:
-    name: karabiner-elements
-    state: present
-    install_options: 'debug,appdir=/Applications'
+
+# TODO:
+# install "nvm" https://github.com/nvm-sh/nvm#nvmrc
 
 - name: Install vagrant
   homebrew:
@@ -36,10 +35,15 @@
     state: present
   ignore_errors: True
   loop:
+    - koekeishiya/formulae/yabai
+    - koekeishiya/formulae/skhd
     - git
+    - git-delta
+    - git-lfs
+    - tig
+    - gh
     - jq
     - htop
-    - git-lfs
     - hub
     - nginx
     - node
@@ -55,25 +59,32 @@
     - the_silver_searcher
     - ipcalc
     - reattach-to-user-namespace
-    - colima
     - redis
     - sqlite
     - dockutil
     - python3
     - podman
+    - colima
     - docker
     - docker-compose
     - docker-buildx
+    - lazydocker #https://github.com/jesseduffield/lazydocker
     - vagrant-completion
     - minikube
     - tree
     - mkcert
     - hey
     - wrk
-#    - npkill # not available in brew
-#    - relabel # not available in brew
-#    - delta # not available in brew
-    - tig
+    - mmv # Move, copy, append, and link multiple files
+    - tlrc # https://github.com/tldr-pages/tldr
+    - comby
+    - ast-grep
+    - diskonaut 
+    - fzf # https://github.com/junegunn/fzf#
+    - bitwise  # Base conversion and bit manipulation.
+
+
+
 
 
 # setup docker-compose as a plugin
@@ -88,4 +99,21 @@
     dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/docker-compose"
     state: link
     force: yes
+
+
+- name: Install node based packages
+  community.general.npm:
+    name: "{{ item }}"
+    global: true
+    state: present
+  ignore_errors: True
+  loop:
+    - npkill     
+    - relabel
+    - rename-cli
+    - dockly # https://github.com/lirantal/dockly 
+    - serve  # https://github.com/vercel/serve
+    - czg    # https://github.com/Zhengqbbb/cz-git/tree/main/packages/cli
+
+
 
