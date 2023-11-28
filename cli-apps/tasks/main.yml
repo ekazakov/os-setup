@@ -24,10 +24,17 @@
     state: present
     install_options: 'debug,appdir=/Applications'
 
+- name: Install vagrant
+  homebrew:
+    name:  vagrant
+    state: present
+  ignore_errors: True
+
 - name: Install more cli apps
   homebrew:
     name: "{{ item }}"
     state: present
+  ignore_errors: True
   loop:
     - git
     - jq
@@ -54,7 +61,10 @@
     - dockutil
     - python3
     - podman
-#    - vagrant # bad behaviour
+    - docker
+    - docker-compose
+    - docker-buildx
+    - vagrant-completion
     - minikube
     - tree
     - mkcert
@@ -65,31 +75,17 @@
 #    - delta # not available in brew
     - tig
 
-- name: Install more desktop apps
-  homebrew_cask:
-    name: "{{ item }}"
-    state: present
-    install_options: 'debug,appdir=/Applications'
-  loop:
-    - arc
-    - google-chrome
-    - jetbrains-toolbox
-    - sublime-text
-    - visual-studio-code
-    - raycast
-    - skype
-    - dropbox
-    - deepl
-    - private-internet-access
-    - tunnelblick
-    #- firefox-developer-edition #No Cask with this name exists.
-# use:
-# brew tap homebrew/cask-versions
-# brew install --cask firefox-developer-edition
-    - anydesk
-    - 4k-video-downloader
-    - vlc
-    - folx
-    - dictionaries
-    - zoom
-    - cleanshot
+
+# setup docker-compose as a plugin
+- name: Ensures "~/.docker/cli-plugins" dir exists
+  file:
+    path: "{{ ansible_env.HOME }}/.docker/cli-plugins"
+    state: directory
+     
+- name: Symlinc docker-compose as a docker plugin
+  file:
+    src: "/usr/local/opt/docker-compose/bin/docker-compose"
+    dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/docker-compose"
+    state: link
+    force: yes
+

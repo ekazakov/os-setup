@@ -1,0 +1,30 @@
+---
+
+- name: Install more desktop apps
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    install_options: 'debug,appdir=/Applications'
+  loop:
+    - arc
+    - google-chrome
+    - jetbrains-toolbox
+    - sublime-text
+    - visual-studio-code
+    - raycast
+    - skype
+    - dropbox
+    - deepl
+    - private-internet-access
+    - tunnelblick
+    #- firefox-developer-edition #No Cask with this name exists.
+# use:
+# brew tap homebrew/cask-versions
+# brew install --cask firefox-developer-edition
+    - anydesk
+    - 4k-video-downloader
+    - vlc
+    - folx
+    - dictionaries
+    - zoom
+    - cleanshot

@@ -17,8 +17,9 @@
 
   # roles are a way to group tasks; they will run in the sequence determined here
   roles:
-    - { role: dotfiles }
-    - { role: oh-my-zsh }
-#    - { role: apps }
-    - { role: tmux }
-#    - { role: macos }
+    # - { role: dotfiles }
+    # - { role: oh-my-zsh }
+    - { role: cli-apps }
+    # - { role: desktop-apps }
+    # - { role: tmux }
+    # - { role: macos }

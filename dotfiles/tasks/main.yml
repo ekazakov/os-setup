@@ -12,3 +12,71 @@
     src: "{{ ansible_env.HOME }}/dotfiles/user.gitconfig.tmpl"
     dest: "{{ ansible_env.HOME }}/.user.gitconfig"
     force: yes
+
+- name: Create a symbolic links for git
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/{{ item }}"
+    state: link
+    force: true
+  with_items:
+    - .gitconfig
+    - .gitignore_global
+
+- name: Ensures "~/.config" dir exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory
+
+# setup Karabiner
+- name: Remove karabiner default config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/karabiner"
+    state: absent
+
+- name: Create a symbolic link to config in ~/dotfiles/config/karabiner
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/configs/karabiner"
+    dest: "{{ ansible_env.HOME }}/.config/karabiner"
+    state: link
+    force: yes
+
+# setup Yabai
+- name: Remove yabai default config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/yabai"
+    state: absent
+
+- name: Create a symbolic link to config in ~/dotfiles/config/yabai
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/configs/yabai"
+    dest: "{{ ansible_env.HOME }}/.config/yabai"
+    state: link
+    force: yes
+
+# setup SKHD
+- name: Remove yabai default config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/skhd"
+    state: absent
+
+- name: Create a symbolic link to config in ~/dotfiles/config/skhd
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/configs/skhd"
+    dest: "{{ ansible_env.HOME }}/.config/skhd"
+    state: link
+    force: yes
+
+# setup iTerm2
+# - name: Create iterm2 config directory
+#   file:
+#     path: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2"
+#     state: directory
+#     force: yes
+
+# - name: Create a symbolic link to iterm2 DynamicProfiles directory
+#   file:
+#     src: "{{ ansible_env.HOME }}/dotfiles/DynamicProfiles"
+#     dest: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles"
+#     state: link
+#     force: yes
