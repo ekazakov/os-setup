@@ -48,6 +48,7 @@ cli_apps:
   - diskonaut
   - fzf # https://github.com/junegunn/fzf#
   - bitwise # Base conversion and bit manipulation.
+  - ranger
 
 node_packages:
   - npkill

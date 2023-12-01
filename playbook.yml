@@ -1,10 +1,10 @@
 # Run ansible 'ansible-playbook -K -i inventory playbook.yml
 ---
 - name: System provisioning
-  #  inventory: hosts
   hosts: localhost
   connection: local
   gather_facts: true
+  any_errors_fatal: false
 
   vars:
     users:
@@ -12,12 +12,14 @@
         username: "{{ ansible_env.USER }}"
         home: "{{ ansible_env.HOME }}"
 
-  tasks:
-    - ansible.builtin.debug:
-        name: User name
+  pre_tasks:
+    - name: User name
+      ansible.builtin.debug:
         msg: "User name: {{ ansible_env.USER }}"
 
-  # roles are a way to group tasks; they will run in the sequence determined here
+
+  # roles are a way to group tasks; they will run in the sequence
+  # determined here
   roles:
     # - {role: dotfiles}
     # - {role: oh-my-zsh}
