@@ -24,13 +24,18 @@
 - name: Installing oh-my-zsh third party plugins
   ansible.builtin.git:
     repo: "{{ item.repo }}"
-    dest: "{{ item.home }}/.oh-my-zsh/custom/plugins/{{ item.name }}"
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/{{ item.name }}"
     update: "{{ users_oh_my_zsh_update }}"
     version: master
   with_items:
-    - { name: zsh-autosuggestions, repo: git@github.com:zsh-users/zsh-autosuggestions.git, home: "{{ ansible_env.HOME }}" }
-    - { name: zsh-syntax-highlighting, repo: git@github.com:zsh-users/zsh-syntax-highlighting.git, home: "{{ ansible_env.HOME }}" }
-    - { name: zsh-history-substring-search, repo: git@github.com:zsh-users/zsh-history-substring-search.git, home: "{{ ansible_env.HOME }}" }
+    - name: zsh-autosuggestions,
+      repo: git@github.com:zsh-users/zsh-autosuggestions.git
+    - name: zsh-syntax-highlighting
+      repo: git@github.com:zsh-users/zsh-syntax-highlighting.git
+    - name: zsh-history-substring-search
+      repo: git@github.com:zsh-users/zsh-history-substring-search.git
+    - name: zsh-nvm
+      repo: git@github.com:/lukechilds/zsh-nvm.git
 
 - name: Installing zsh theme "pure"
   ansible.builtin.git:

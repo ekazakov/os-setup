@@ -21,11 +21,15 @@
 
 # TODO:
 # install "nvm" https://github.com/nvm-sh/nvm#nvmrc
+
 - name: Install vagrant
   community.general.homebrew:
     name: vagrant
     state: present
   ignore_errors: true
+  tags:
+    - cli
+    - homebrew
 
 - name: Install more cli apps
   community.general.homebrew:
@@ -33,24 +37,37 @@
     state: present
   ignore_errors: true
   loop: "{{ cli_apps }}"
+  tags:
+    - vagrant
+    - cli
+    - homebrew
 
 # setup docker-compose as a plugin
 - name: Ensures "~/.docker/cli-plugins" dir exists
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.docker/cli-plugins"
     state: directory
+  tags:
+    - cli
+    - homebrew
 
-- name: Symlinc docker-compose as a docker plugin
+- name: Symlink docker-compose as a docker plugin
   ansible.builtin.file:
     src: /usr/local/opt/docker-compose/bin/docker-compose
     dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/docker-compose"
     state: link
     force: true
+  tags:
+    - homebrew
+    - cli
 
 - name: Install node based packages
-  community.general.npm:
+  community.general.pnpm:
     name: "{{ item }}"
     global: true
     state: present
   ignore_errors: true
   loop: "{{ node_packages }}"
+  tags:
+    - pnpm
+    - cli

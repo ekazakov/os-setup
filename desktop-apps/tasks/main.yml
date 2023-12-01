@@ -3,40 +3,22 @@
   community.general.homebrew_tap:
     name: homebrew/cask-versions
     state: present
-
-#- firefox-developer-edition #No Cask with this name exists.
-# use:
-# brew tap homebrew/cask-versions
-# brew install --cask firefox-developer-edition
+  tags:
+    - desktop
 
 - name: Install karabiner-elements
   community.general.homebrew_cask:
     name: karabiner-elements
     state: present
     install_options: debug,appdir=/Applications
+  tags:
+    - desktop
 
 - name: Install more desktop apps
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: present
     install_options: debug,appdir=/Applications
-  loop:
-    - firefox-developer-edition
-    - arc
-    - google-chrome
-    - jetbrains-toolbox
-    - sublime-text
-    - visual-studio-code
-    - raycast
-    - skype
-    - dropbox
-    - deepl
-    - private-internet-access
-    - tunnelblick
-    - anydesk
-    - 4k-video-downloader
-    - vlc
-    - folx
-    - dictionaries
-    - zoom
-    - cleanshot
+  loop: "{{ desktop_apps }}"
+  tags:
+    - desktop

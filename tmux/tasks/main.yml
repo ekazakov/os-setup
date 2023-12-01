@@ -3,15 +3,18 @@
   community.general.homebrew:
     name: tmux
     state: present
+  tags:
+    - tmux
 
 #  https://github.com/gpakosz/.tmux.git
 - name: Installing oh-my-tmux
   ansible.builtin.git:
     repo: https://github.com/gpakosz/.tmux.git
-    dest: "{{ item.home }}/.tmux"
+    dest: "{{ ansible_env.HOME }}/.tmux"
     update: true
     version: master
-  with_items: "{{ users }}"
+  tags:
+    - tmux
 
 - name: Create a symbolic link to .tmux.conf
   ansible.builtin.file:
@@ -19,6 +22,8 @@
     dest: "{{ ansible_env.HOME }}/.tmux.conf"
     state: link
     force: true
+  tags:
+    - tmux
 
 - name: Create a symbolic link to .tmux.conf.local
   ansible.builtin.file:
@@ -26,3 +31,5 @@
     dest: "{{ ansible_env.HOME }}/.tmux.conf.local"
     state: link
     force: true
+  tags:
+    - tmux
