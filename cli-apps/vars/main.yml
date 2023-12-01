@@ -1,0 +1,58 @@
+---
+cli_apps:
+  - ansible-lint
+  - koekeishiya/formulae/yabai
+  - koekeishiya/formulae/skhd
+  - git
+  - git-delta
+  - git-lfs
+  - tig
+  - gh
+  - jq
+  - htop
+  - hub
+  - nginx
+  - node
+  - editorconfig
+  - openconnect
+  - openssl
+  - openvpn
+  - readline
+  - python
+  - watchman
+  - pnpm
+  - wget
+  - the_silver_searcher
+  - ipcalc
+  - reattach-to-user-namespace
+  - redis
+  - sqlite
+  - dockutil
+  - python3
+  - podman
+  - colima
+  - docker
+  - docker-compose
+  - docker-buildx
+  - lazydocker #https://github.com/jesseduffield/lazydocker
+  - vagrant-completion
+  - minikube
+  - tree
+  - mkcert
+  - hey
+  - wrk
+  - mmv # Move, copy, append, and link multiple files
+  - tlrc # https://github.com/tldr-pages/tldr
+  - comby
+  - ast-grep
+  - diskonaut
+  - fzf # https://github.com/junegunn/fzf#
+  - bitwise # Base conversion and bit manipulation.
+
+node_packages:
+  - npkill
+  - relabel
+  - rename-cli
+  - dockly # https://github.com/lirantal/dockly
+  - serve # https://github.com/vercel/serve
+  - czg # https://github.com/Zhengqbbb/cz-git/tree/main/packages/cli

@@ -1,7 +1,6 @@
 ---
-
 - name: Installing oh-my-zsh per user
-  git:
+  ansible.builtin.git:
     repo: https://github.com/robbyrussell/oh-my-zsh.git
     dest: "{{ item.home }}/.oh-my-zsh"
     update: "{{ users_oh_my_zsh_update }}"
@@ -15,26 +14,26 @@
 #  with_items: "{{ users }}"
 
 - name: Create a symbolic link to .zshrc
-  file:
+  ansible.builtin.file:
     src: "{{ item.home }}/dotfiles/.zshrc"
     dest: "{{ item.home }}/.zshrc"
     state: link
-    force: yes
+    force: true
   with_items: "{{ users }}"
 
 - name: Installing oh-my-zsh third party plugins
-  git:
+  ansible.builtin.git:
     repo: "{{ item.repo }}"
     dest: "{{ item.home }}/.oh-my-zsh/custom/plugins/{{ item.name }}"
     update: "{{ users_oh_my_zsh_update }}"
     version: master
   with_items:
-    - { name: "zsh-autosuggestions", repo: "git@github.com:zsh-users/zsh-autosuggestions.git", home: "{{ ansible_env.HOME }}" }
-    - { name: "zsh-syntax-highlighting", repo: "git@github.com:zsh-users/zsh-syntax-highlighting.git", home: "{{ ansible_env.HOME }}" }
-    - { name: "zsh-history-substring-search", repo: "git@github.com:zsh-users/zsh-history-substring-search.git", home: "{{ ansible_env.HOME }}" }
+    - { name: zsh-autosuggestions, repo: git@github.com:zsh-users/zsh-autosuggestions.git, home: "{{ ansible_env.HOME }}" }
+    - { name: zsh-syntax-highlighting, repo: git@github.com:zsh-users/zsh-syntax-highlighting.git, home: "{{ ansible_env.HOME }}" }
+    - { name: zsh-history-substring-search, repo: git@github.com:zsh-users/zsh-history-substring-search.git, home: "{{ ansible_env.HOME }}" }
 
 - name: Installing zsh theme "pure"
-  git:
+  ansible.builtin.git:
     repo: https://github.com/sindresorhus/pure.git
     dest: "{{ item.home }}/.zsh/pure"
     update: "{{ users_oh_my_zsh_update }}"

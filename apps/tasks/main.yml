@@ -1,5 +1,4 @@
 ---
-
 #- name: Check git dotfiles
 #  stat:
 #    path: "{{ ansible_env.HOME }}/{{ item }}"
@@ -19,13 +18,13 @@
 #    - .gitignore_global
 
 - name: Install karabiner-elements
-  homebrew_cask:
+  community.general.homebrew_cask:
     name: karabiner-elements
     state: present
-    install_options: 'debug,appdir=/Applications'
+    install_options: debug,appdir=/Applications
 
 - name: Install more cli apps
-  homebrew:
+  community.general.homebrew:
     name: "{{ item }}"
     state: present
   loop:
@@ -54,22 +53,22 @@
     - dockutil
     - python3
     - podman
-#    - vagrant # bad behaviour
+    #    - vagrant # bad behaviour
     - minikube
     - tree
     - mkcert
     - hey
     - wrk
-#    - npkill # not available in brew
-#    - relabel # not available in brew
-#    - delta # not available in brew
+    #    - npkill # not available in brew
+    #    - relabel # not available in brew
+    #    - delta # not available in brew
     - tig
 
 - name: Install more desktop apps
-  homebrew_cask:
+  community.general.homebrew_cask:
     name: "{{ item }}"
     state: present
-    install_options: 'debug,appdir=/Applications'
+    install_options: debug,appdir=/Applications
   loop:
     - arc
     - google-chrome
@@ -83,9 +82,9 @@
     - private-internet-access
     - tunnelblick
     #- firefox-developer-edition #No Cask with this name exists.
-# use:
-# brew tap homebrew/cask-versions
-# brew install --cask firefox-developer-edition
+    # use:
+    # brew tap homebrew/cask-versions
+    # brew install --cask firefox-developer-edition
     - anydesk
     - 4k-video-downloader
     - vlc

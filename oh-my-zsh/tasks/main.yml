@@ -1,5 +1,4 @@
 ---
-
 #- import_tasks: install.yml
 #  tags:
 #    - system
@@ -7,7 +6,7 @@
 #    - install
 #    - install-users-oh-my-zsh
 
-- import_tasks: config.yml
+- ansible.builtin.import_tasks: config.yml
   tags:
     - system
     - users-oh-my-zsh

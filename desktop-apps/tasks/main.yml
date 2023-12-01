@@ -4,22 +4,22 @@
     name: homebrew/cask-versions
     state: present
 
-    #- firefox-developer-edition #No Cask with this name exists.
+#- firefox-developer-edition #No Cask with this name exists.
 # use:
 # brew tap homebrew/cask-versions
 # brew install --cask firefox-developer-edition
 
 - name: Install karabiner-elements
-  homebrew_cask:
+  community.general.homebrew_cask:
     name: karabiner-elements
     state: present
-    install_options: 'debug,appdir=/Applications'
+    install_options: debug,appdir=/Applications
 
 - name: Install more desktop apps
-  homebrew_cask:
+  community.general.homebrew_cask:
     name: "{{ item }}"
     state: present
-    install_options: 'debug,appdir=/Applications'
+    install_options: debug,appdir=/Applications
   loop:
     - firefox-developer-edition
     - arc

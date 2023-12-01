@@ -1,7 +1,7 @@
 ---
 # SEE more cli apps https://github.com/agarrharr/awesome-cli-apps#macos
 
-#- name: Check git dotfiles
+# - name: Check git dotfiles
 #  stat:
 #    path: "{{ ansible_env.HOME }}/{{ item }}"
 #  register: results
@@ -9,9 +9,9 @@
 #    - .gitconfig
 #    - .gitignore_global
 
-#- debug:
+# - debug:
 #    var: results
-#- name: Remove old .gitconfig and .gitignore_global if exists
+# - name: Remove old .gitconfig and .gitignore_global if exists
 #  file:
 #    path: "{{ ansible_env.HOME }}/{{ item }}"
 #    state: absent
@@ -19,101 +19,38 @@
 #    - .gitconfig
 #    - .gitignore_global
 
-
 # TODO:
 # install "nvm" https://github.com/nvm-sh/nvm#nvmrc
-
 - name: Install vagrant
-  homebrew:
-    name:  vagrant
+  community.general.homebrew:
+    name: vagrant
     state: present
-  ignore_errors: True
+  ignore_errors: true
 
 - name: Install more cli apps
-  homebrew:
+  community.general.homebrew:
     name: "{{ item }}"
     state: present
-  ignore_errors: True
-  loop:
-    - koekeishiya/formulae/yabai
-    - koekeishiya/formulae/skhd
-    - git
-    - git-delta
-    - git-lfs
-    - tig
-    - gh
-    - jq
-    - htop
-    - hub
-    - nginx
-    - node
-    - editorconfig
-    - openconnect
-    - openssl
-    - openvpn
-    - readline
-    - python
-    - watchman
-    - pnpm
-    - wget
-    - the_silver_searcher
-    - ipcalc
-    - reattach-to-user-namespace
-    - redis
-    - sqlite
-    - dockutil
-    - python3
-    - podman
-    - colima
-    - docker
-    - docker-compose
-    - docker-buildx
-    - lazydocker #https://github.com/jesseduffield/lazydocker
-    - vagrant-completion
-    - minikube
-    - tree
-    - mkcert
-    - hey
-    - wrk
-    - mmv # Move, copy, append, and link multiple files
-    - tlrc # https://github.com/tldr-pages/tldr
-    - comby
-    - ast-grep
-    - diskonaut 
-    - fzf # https://github.com/junegunn/fzf#
-    - bitwise  # Base conversion and bit manipulation.
-
-
-
-
+  ignore_errors: true
+  loop: "{{ cli_apps }}"
 
 # setup docker-compose as a plugin
 - name: Ensures "~/.docker/cli-plugins" dir exists
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.docker/cli-plugins"
     state: directory
-     
+
 - name: Symlinc docker-compose as a docker plugin
-  file:
-    src: "/usr/local/opt/docker-compose/bin/docker-compose"
+  ansible.builtin.file:
+    src: /usr/local/opt/docker-compose/bin/docker-compose
     dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/docker-compose"
     state: link
-    force: yes
-
+    force: true
 
 - name: Install node based packages
   community.general.npm:
     name: "{{ item }}"
     global: true
     state: present
-  ignore_errors: True
-  loop:
-    - npkill     
-    - relabel
-    - rename-cli
-    - dockly # https://github.com/lirantal/dockly 
-    - serve  # https://github.com/vercel/serve
-    - czg    # https://github.com/Zhengqbbb/cz-git/tree/main/packages/cli
-
-
-
+  ignore_errors: true
+  loop: "{{ node_packages }}"

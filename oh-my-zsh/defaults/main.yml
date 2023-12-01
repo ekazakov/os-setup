@@ -22,7 +22,7 @@
 # default theme
 users_oh_my_zsh_theme: robbyrussell
 # update git repo on config run
-users_oh_my_zsh_update: no
+users_oh_my_zsh_update: false
 # default plugins
 users_oh_my_zsh_plugins: git
 # Use case-sensitive completion

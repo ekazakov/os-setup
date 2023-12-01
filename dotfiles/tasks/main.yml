@@ -1,20 +1,19 @@
 ---
-
 - name: Clonne dotfiles repository
-  git:
+  ansible.builtin.git:
     repo: git@github.com:ekazakov/dotfiles.git
     dest: "{{ ansible_env.HOME }}/dotfiles"
-    update: True
+    update: true
     version: master
 
 - name: Copy git global user config
-  copy:
+  ansible.builtin.copy:
     src: "{{ ansible_env.HOME }}/dotfiles/user.gitconfig.tmpl"
     dest: "{{ ansible_env.HOME }}/.user.gitconfig"
-    force: yes
+    force: true
 
 - name: Create a symbolic links for git
-  file:
+  ansible.builtin.file:
     src: "{{ ansible_env.HOME }}/dotfiles/{{ item }}"
     dest: "{{ ansible_env.HOME }}/{{ item }}"
     state: link
@@ -24,48 +23,48 @@
     - .gitignore_global
 
 - name: Ensures "~/.config" dir exists
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.config"
     state: directory
 
 # setup Karabiner
 - name: Remove karabiner default config directory
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.config/karabiner"
     state: absent
 
 - name: Create a symbolic link to config in ~/dotfiles/config/karabiner
-  file:
+  ansible.builtin.file:
     src: "{{ ansible_env.HOME }}/dotfiles/configs/karabiner"
     dest: "{{ ansible_env.HOME }}/.config/karabiner"
     state: link
-    force: yes
+    force: true
 
 # setup Yabai
 - name: Remove yabai default config directory
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.config/yabai"
     state: absent
 
 - name: Create a symbolic link to config in ~/dotfiles/config/yabai
-  file:
+  ansible.builtin.file:
     src: "{{ ansible_env.HOME }}/dotfiles/configs/yabai"
     dest: "{{ ansible_env.HOME }}/.config/yabai"
     state: link
-    force: yes
+    force: true
 
 # setup SKHD
 - name: Remove yabai default config directory
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.config/skhd"
     state: absent
 
 - name: Create a symbolic link to config in ~/dotfiles/config/skhd
-  file:
+  ansible.builtin.file:
     src: "{{ ansible_env.HOME }}/dotfiles/configs/skhd"
     dest: "{{ ansible_env.HOME }}/.config/skhd"
     state: link
-    force: yes
+    force: true
 
 # setup iTerm2
 # - name: Create iterm2 config directory
