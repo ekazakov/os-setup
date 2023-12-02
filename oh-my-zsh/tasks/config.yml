@@ -7,12 +7,6 @@
     version: master
   with_items: "{{ users }}"
 
-#- name: Unlink old symlink to .zshrc if exists
-#  file:
-#    path: "{{ item.home }}/.zshrc"
-#    state: absent
-#  with_items: "{{ users }}"
-
 - name: Create a symbolic link to .zshrc
   ansible.builtin.file:
     src: "{{ item.home }}/dotfiles/.zshrc"

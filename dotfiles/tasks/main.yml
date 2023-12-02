@@ -5,12 +5,16 @@
     dest: "{{ ansible_env.HOME }}/dotfiles"
     update: true
     version: master
+  tags:
+    - dotfiles
 
 - name: Copy git global user config
   ansible.builtin.copy:
     src: "{{ ansible_env.HOME }}/dotfiles/user.gitconfig.tmpl"
     dest: "{{ ansible_env.HOME }}/.user.gitconfig"
     force: true
+  tags:
+    - dotfiles
 
 - name: Create a symbolic links for git
   ansible.builtin.file:
@@ -21,17 +25,24 @@
   with_items:
     - .gitconfig
     - .gitignore_global
+  tags:
+    - dotfiles
+
 
 - name: Ensures "~/.config" dir exists
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.config"
     state: directory
+  tags:
+    - dotfiles
 
 # setup Karabiner
 - name: Remove karabiner default config directory
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.config/karabiner"
     state: absent
+  tags:
+    - dotfiles
 
 - name: Create a symbolic link to config in ~/dotfiles/config/karabiner
   ansible.builtin.file:
@@ -39,12 +50,16 @@
     dest: "{{ ansible_env.HOME }}/.config/karabiner"
     state: link
     force: true
+  tags:
+    - dotfiles
 
 # setup Yabai
 - name: Remove yabai default config directory
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.config/yabai"
     state: absent
+  tags:
+    - dotfiles
 
 - name: Create a symbolic link to config in ~/dotfiles/config/yabai
   ansible.builtin.file:
@@ -52,12 +67,16 @@
     dest: "{{ ansible_env.HOME }}/.config/yabai"
     state: link
     force: true
+  tags:
+    - dotfiles
 
 # setup SKHD
 - name: Remove yabai default config directory
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.config/skhd"
     state: absent
+  tags:
+    - dotfiles
 
 - name: Create a symbolic link to config in ~/dotfiles/config/skhd
   ansible.builtin.file:
@@ -65,7 +84,9 @@
     dest: "{{ ansible_env.HOME }}/.config/skhd"
     state: link
     force: true
-
+  tags:
+    - dotfiles
+    
 # setup iTerm2
 # - name: Create iterm2 config directory
 #   file:

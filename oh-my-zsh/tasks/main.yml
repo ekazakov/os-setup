@@ -8,7 +8,4 @@
 
 - ansible.builtin.import_tasks: config.yml
   tags:
-    - system
-    - users-oh-my-zsh
-    - config
-    - config-users-oh-my-zsh
+    - oh-my-zsh
