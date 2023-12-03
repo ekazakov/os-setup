@@ -16,21 +16,21 @@
     - name: User name
       ansible.builtin.debug:
         msg: "User name: {{ ansible_env.USER }}"
-
-#    - name: Install nvm
-#      # yamllint disable
-#      ansible.builtin.shell: >
-#        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-#      # yamllint enable
-#      args:
-#        creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+      tags:
+        - always
 
   # roles are a way to group tasks; they will run in the sequence
   # determined here
   roles:
-#    - role: dotfiles
+    - role: dotfiles
+      tags: dotfiles
     - role: oh-my-zsh
-#    - role: cli-apps
-#    - role: desktop-apps
-#    - role: tmux
+      tags: oh-my-zsh
+    - role: cli-apps
+      tags: cli-apps
+    - role: desktop-apps
+      tags: desktop-apps
+    - role: tmux
+      tags: tmux
 #    - role: macos
+#      tags: macos

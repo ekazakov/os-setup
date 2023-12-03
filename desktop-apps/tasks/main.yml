@@ -1,5 +1,5 @@
 ---
-- name: Tap a Homebrew homebrew/cask-versions
+- name: Tap a Homebrew "homebrew/cask-versions"
   community.general.homebrew_tap:
     name: homebrew/cask-versions
     state: present

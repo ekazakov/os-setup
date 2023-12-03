@@ -26,6 +26,8 @@ Host *
 
 DESTINATION="${HOME}/.ssh/config"
 
+mkdir -p "${HOME}/.ssh"
+
 printf "\n******** Generate github access key\n"
 ssh-keygen -N "" -t rsa -b 4096 -f ~/.ssh/github_rsa -C "github.com key by evgeniy.kazakov@gmail.com"
 
@@ -41,7 +43,7 @@ ssh-add  --apple-use-keychain ~/.ssh/bitbucket_rsa
 
 printf "\n******** Create user ssh config\n"
 
-mkdir -p "${HOME}/.ssh"
+
 if [ -f "${DESTINATION}" ]; then
 	mv "${DESTINATION}" "${DESTINATION}_old"
 fi

@@ -6,7 +6,7 @@
     update: true
     version: master
   tags:
-    - dotfiles
+    - dotfiles-repo
 
 - name: Copy git global user config
   ansible.builtin.copy:
@@ -14,7 +14,7 @@
     dest: "{{ ansible_env.HOME }}/.user.gitconfig"
     force: true
   tags:
-    - dotfiles
+    - dotfiles-git-config
 
 - name: Create a symbolic links for git
   ansible.builtin.file:
@@ -26,7 +26,7 @@
     - .gitconfig
     - .gitignore_global
   tags:
-    - dotfiles
+    - dotfiles-git-config
 
 
 - name: Ensures "~/.config" dir exists
@@ -34,69 +34,71 @@
     path: "{{ ansible_env.HOME }}/.config"
     state: directory
   tags:
-    - dotfiles
+    - dotfiles-config-dir
 
 # setup Karabiner
-- name: Remove karabiner default config directory
-  ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.config/karabiner"
-    state: absent
-  tags:
-    - dotfiles
+- name: Karabiner Setup
+  block:
+    - name: Remove karabiner default config directory
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/.config/karabiner"
+        state: absent
 
-- name: Create a symbolic link to config in ~/dotfiles/config/karabiner
-  ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/dotfiles/configs/karabiner"
-    dest: "{{ ansible_env.HOME }}/.config/karabiner"
-    state: link
-    force: true
+    - name: Create a symbolic link to config in ~/dotfiles/config/karabiner
+      ansible.builtin.file:
+        src: "{{ ansible_env.HOME }}/dotfiles/configs/karabiner"
+        dest: "{{ ansible_env.HOME }}/.config/karabiner"
+        state: link
+        force: true
   tags:
-    - dotfiles
+    - dotfiles-karabiner
 
-# setup Yabai
-- name: Remove yabai default config directory
-  ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.config/yabai"
-    state: absent
-  tags:
-    - dotfiles
+- name: Yabai Setup
+  block:
+    - name: Remove yabai default config directory
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/.config/yabai"
+        state: absent
 
-- name: Create a symbolic link to config in ~/dotfiles/config/yabai
-  ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/dotfiles/configs/yabai"
-    dest: "{{ ansible_env.HOME }}/.config/yabai"
-    state: link
-    force: true
+    - name: Create a symbolic link to config in ~/dotfiles/config/yabai
+      ansible.builtin.file:
+        src: "{{ ansible_env.HOME }}/dotfiles/configs/yabai"
+        dest: "{{ ansible_env.HOME }}/.config/yabai"
+        state: link
+        force: true
   tags:
-    - dotfiles
+    - dotfiles-yabai
 
 # setup SKHD
-- name: Remove yabai default config directory
-  ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.config/skhd"
-    state: absent
-  tags:
-    - dotfiles
+- name: SKHD Setup
+  block:
+    - name: Remove yabai default config directory
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/.config/skhd"
+        state: absent
 
-- name: Create a symbolic link to config in ~/dotfiles/config/skhd
-  ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/dotfiles/configs/skhd"
-    dest: "{{ ansible_env.HOME }}/.config/skhd"
-    state: link
-    force: true
+    - name: Create a symbolic link to config in ~/dotfiles/config/skhd
+      ansible.builtin.file:
+        src: "{{ ansible_env.HOME }}/dotfiles/configs/skhd"
+        dest: "{{ ansible_env.HOME }}/.config/skhd"
+        state: link
+        force: true
   tags:
-    - dotfiles
-    
-# setup iTerm2
-# - name: Create iterm2 config directory
-#   file:
-#     path: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2"
-#     state: directory
-#     force: yes
+    - dotfiles-skhd
 
-# - name: Create a symbolic link to iterm2 DynamicProfiles directory
-#   file:
-#     src: "{{ ansible_env.HOME }}/dotfiles/DynamicProfiles"
-#     dest: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles"
-#     state: link
-#     force: yes
+- name: iTerm2 Setup
+  block:
+    - name: Create iterm2 config directory
+      file:
+        path: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2"
+        state: directory
+        # force: true
+
+    - name: Create a symbolic link to iterm2 DynamicProfiles directory
+      file:
+        src: "{{ ansible_env.HOME }}/dotfiles/DynamicProfiles"
+        dest: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles"
+        state: link
+        force: true
+  tags:
+    - dotfiles-iterm2

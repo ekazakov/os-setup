@@ -177,16 +177,16 @@ fi
 # General UI/UX                                                               #
 ###############################################################################
 
-if ask "Set computer name (as done via System Preferences → Sharing)" Y; then
-  sudo scutil --set ComputerName "IND-CHN-Vijay's MBP"
-  sudo scutil --set HostName "Vijay"
-  sudo scutil --set LocalHostName "Vijay"
-  sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Vijay"
-fi
+#if ask "Set computer name (as done via System Preferences → Sharing)" Y; then
+#  sudo scutil --set ComputerName "Evgenii MBP"
+#  sudo scutil --set HostName "Evgenii"
+#  sudo scutil --set LocalHostName "Evgenii"
+#  sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Evgenii"
+#fi
 
-if ask "Set standby delay to 6 hours (default: 1 hour)" Y; then
-  sudo pmset -a standbydelay 21600
-fi
+#if ask "Set standby delay to 6 hours (default: 1 hour)" Y; then
+#  sudo pmset -a standbydelay 21600
+#fi
 
 # Disable the sound effects on boot
 # sudo nvram SystemAudioVolume=" "
