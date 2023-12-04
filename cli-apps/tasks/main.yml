@@ -19,8 +19,13 @@
 #    - .gitconfig
 #    - .gitignore_global
 
-# TODO:
-# install "nvm" https://github.com/nvm-sh/nvm#nvmrc
+
+- name: Tap a Homebrew "homebrew/cask-fonts"
+  community.general.homebrew_tap:
+    name: homebrew/cask-fonts
+    state: present
+  tags:
+    - homebrew
 
 - name: Vagrant Block
   block:
