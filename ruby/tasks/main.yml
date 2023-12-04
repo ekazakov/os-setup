@@ -1,0 +1,10 @@
+---
+- name: Install ruby manager
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  ignore_errors: true
+  loop: "{{ cli_apps }}"
+  tags:
+    - chruby
+    - ruby-install

@@ -48,7 +48,11 @@ cli_apps:
   - diskonaut
   - fzf # https://github.com/junegunn/fzf#
   - bitwise # Base conversion and bit manipulation.
+  - fd
+  - bat
+  - ripgrep
   - font-iosevka
+  - font-symbols-only-nerd-font
 
 node_packages:
   - npkill

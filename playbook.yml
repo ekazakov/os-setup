@@ -32,5 +32,8 @@
       tags: desktop-apps
     - role: tmux
       tags: tmux
+      # long installation time
+    - role: ruby
+      tags: ruby
 #    - role: macos
 #      tags: macos
