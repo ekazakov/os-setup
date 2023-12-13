@@ -2,6 +2,7 @@
 desktop_apps:
   - firefox-developer-edition
   - arc
+  - figma
   - google-chrome
   - jetbrains-toolbox
   - sublime-text

@@ -8,14 +8,6 @@
   tags:
     - dotfiles-repo
 
-- name: Copy git global user config
-  ansible.builtin.copy:
-    src: "{{ ansible_env.HOME }}/dotfiles/user.gitconfig.tmpl"
-    dest: "{{ ansible_env.HOME }}/.user.gitconfig"
-    force: true
-  tags:
-    - dotfiles-git-config
-
 - name: Create a symbolic links for git
   ansible.builtin.file:
     src: "{{ ansible_env.HOME }}/dotfiles/{{ item }}"
@@ -25,6 +17,8 @@
   with_items:
     - .gitconfig
     - .gitignore_global
+    - .gitconfig-work
+    - .gitconfig-personal
   tags:
     - dotfiles-git-config
 
@@ -86,19 +80,20 @@
   tags:
     - dotfiles-skhd
 
-- name: iTerm2 Setup
-  block:
-    - name: Create iterm2 config directory
-      file:
-        path: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2"
-        state: directory
-        # force: true
-
-    - name: Create a symbolic link to iterm2 DynamicProfiles directory
-      file:
-        src: "{{ ansible_env.HOME }}/dotfiles/DynamicProfiles"
-        dest: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles"
-        state: link
-        force: true
-  tags:
-    - dotfiles-iterm2
+# Dynamic Profiles causes an error
+# - name: iTerm2 Setup
+#   block:
+#     - name: Create iterm2 config directory
+#       file:
+#         path: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2"
+#         state: directory
+#         # force: true
+#
+#     - name: Create a symbolic link to iterm2 DynamicProfiles directory
+#       file:
+#         src: "{{ ansible_env.HOME }}/dotfiles/DynamicProfiles"
+#         dest: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles"
+#         state: link
+#         force: true
+#   tags:
+#     - dotfiles-iterm2
