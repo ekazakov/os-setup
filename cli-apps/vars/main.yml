@@ -1,5 +1,6 @@
 ---
 cli_apps:
+  - bash # mac bash is old
   - ansible-lint
   - koekeishiya/formulae/yabai
   - koekeishiya/formulae/skhd
@@ -9,6 +10,7 @@ cli_apps:
   - tig
   - gh
   - jq
+  - noahgorstein/tap/jqp
   - htop
   - hub
   - nginx
@@ -24,7 +26,7 @@ cli_apps:
   - wget
   - the_silver_searcher
   - ipcalc
-  - reattach-to-user-namespace
+#  - reattach-to-user-namespace
   - redis
   - sqlite
   - dockutil
@@ -53,6 +55,9 @@ cli_apps:
   - ripgrep
   - font-iosevka
   - font-symbols-only-nerd-font
+  - dust
+  - sloc
+
 
 node_packages:
   - npkill

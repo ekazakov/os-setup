@@ -29,11 +29,21 @@
 
 - name: Vagrant Block
   block:
+    - name: Vagrant exists
+      stat:
+        path: /usr/local/bin/vagrant
+      register: vagrant_exists
+
+    - name: Debug vagrant_exists
+      debug:
+        var: vagrant_exists
+
     - name: Install vagrant
       community.general.homebrew:
         name: vagrant
         state: present
       ignore_errors: true
+      when: vagrant_exists.stat.exists == false
   tags:
     - vagrant
     - homebrew
