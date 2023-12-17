@@ -6,11 +6,10 @@
   tags:
     - tmux
 
-#  https://github.com/gpakosz/.tmux.git
-- name: Installing oh-my-tmux
+- name: Installing tmux plugin manager
   ansible.builtin.git:
-    repo: https://github.com/gpakosz/.tmux.git
-    dest: "{{ ansible_env.HOME }}/.tmux"
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
     update: true
     version: master
   tags:
@@ -18,18 +17,14 @@
 
 - name: Create a symbolic link to .tmux.conf
   ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/.tmux/.tmux.conf"
+    src: "{{ ansible_env.HOME }}/dotfiles/.tmux.conf"
     dest: "{{ ansible_env.HOME }}/.tmux.conf"
     state: link
     force: true
   tags:
     - tmux
 
-- name: Create a symbolic link to .tmux.conf.local
-  ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/dotfiles/.tmux.conf.local"
-    dest: "{{ ansible_env.HOME }}/.tmux.conf.local"
-    state: link
-    force: true
+- name: Install tmux plugins with tpm
+  ansible.builtin.shell: "{{ ansible_env.HOME }}/.tmux/plugins/tpm/bin/install_plugins"
   tags:
     - tmux
