@@ -57,6 +57,14 @@ cli_apps:
   - font-symbols-only-nerd-font
   - dust
   - sloc
+  - yazi
+  - ffmpeg
+  - p7zip
+  - zoxide
+  - imagemagick
+
+
+
 
 
 node_packages:
