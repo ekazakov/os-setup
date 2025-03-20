@@ -3,13 +3,14 @@ desktop_apps:
   - firefox-developer-edition
   # - pieces # https://pieces.app
   - arc
-  - figma
   - google-chrome
+  - vivaldi
+  - zen-browser
   - jetbrains-toolbox
   - sublime-text
   - visual-studio-code
+  - windsurf
   - raycast
-  - skype
   - dropbox
   - deepl
   - private-internet-access
@@ -21,7 +22,10 @@ desktop_apps:
   - dictionaries
   - zoom
   - cleanshot
-  - iterm2
-#  - microsoft-team
-  - zen-browser
+#  - iterm2
+  - figma
+  - microsoft-teams
   - anki
+  - ghostty
+  - obsidian
+  - steam

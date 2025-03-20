@@ -23,6 +23,7 @@ cli_apps:
   - python
   - watchman
   - pnpm
+  - yarn
   - wget
   - the_silver_searcher
   - ipcalc
@@ -36,6 +37,7 @@ cli_apps:
   - docker
   - docker-compose
   - docker-buildx
+  - docker-completion
   - lazydocker #https://github.com/jesseduffield/lazydocker
   - vagrant-completion
   - minikube
@@ -62,10 +64,12 @@ cli_apps:
   - p7zip
   - zoxide
   - imagemagick
-
-
-
-
+  - aider
+  - brotli
+  - kubernetes-cli
+  - pipx
+  - ranger
+  - sevenzip
 
 node_packages:
   - npkill
