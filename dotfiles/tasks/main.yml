@@ -66,7 +66,7 @@
 # setup SKHD
 - name: SKHD Setup
   block:
-    - name: Remove yabai default config directory
+    - name: Remove skhd default config directory
       ansible.builtin.file:
         path: "{{ ansible_env.HOME }}/.config/skhd"
         state: absent
@@ -80,6 +80,21 @@
   tags:
     - dotfiles-skhd
 
+- name: Ghostty Setup
+  block:
+    - name: Remove ghostty default config directory
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/.config/ghostty"
+        state: absent
+
+    - name: Create a symbolic link to config in ~/dotfiles/config/ghostty
+      ansible.builtin.file:
+        src: "{{ ansible_env.HOME }}/dotfiles/configs/ghostty"
+        dest: "{{ ansible_env.HOME }}/.config/ghostty"
+        state: link
+        force: true
+  tags:
+    - dotfiles-ghostty
 # Dynamic Profiles causes an error
 # - name: iTerm2 Setup
 #   block:
