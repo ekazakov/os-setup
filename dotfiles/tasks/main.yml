@@ -1,5 +1,5 @@
 ---
-- name: Clonne dotfiles repository
+- name: Clone dotfiles repository
   ansible.builtin.git:
     repo: git@github.com:ekazakov/dotfiles.git
     dest: "{{ ansible_env.HOME }}/dotfiles"
