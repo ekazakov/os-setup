@@ -19,13 +19,13 @@
 #    - .gitconfig
 #    - .gitignore_global
 
-
-- name: Tap a Homebrew "homebrew/cask-fonts"
-  community.general.homebrew_tap:
-    name: homebrew/cask-fonts
-    state: present
-  tags:
-    - homebrew
+# depricated
+#- name: Tap a Homebrew "homebrew/cask-fonts"
+#  community.general.homebrew_tap:
+#    name: homebrew/cask-fonts
+#    state: present
+#  tags:
+#    - homebrew
 
 - name: Vagrant Block
   block:
