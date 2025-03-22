@@ -1,11 +1,4 @@
 ---
-- name: Tap a Homebrew "homebrew/cask-versions"
-  community.general.homebrew_tap:
-    name: homebrew/cask-versions
-    state: present
-  tags:
-    - desktop
-
 - name: Install karabiner-elements
   community.general.homebrew_cask:
     name: karabiner-elements
