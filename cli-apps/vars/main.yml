@@ -39,7 +39,6 @@ cli_apps:
   - docker-buildx
   - docker-completion
   - lazydocker #https://github.com/jesseduffield/lazydocker
-  - vagrant-completion
   - minikube
   - tree
   - mkcert
