@@ -28,7 +28,7 @@
 #    - homebrew
 - name: Tap a
   community.general.homebrew_tap:
-    name: {{ item }}
+    name: "{{ item }}"
     state: present
   loop:
     - koekeishiya/formulae/yabai
