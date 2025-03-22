@@ -26,14 +26,13 @@
 #    state: present
 #  tags:
 #    - homebrew
-- name: Tap a
+- name: Tap custom formula
   community.general.homebrew_tap:
     name: "{{ item }}"
     state: present
   loop:
-    - koekeishiya/formulae/yabai
-    - koekeishiya/formulae/skhd
-    - noahgorstein/tap/jqp
+    - koekeishiya/formulae
+    - noahgorstein/tap
 
 
 - name: Vagrant Block
