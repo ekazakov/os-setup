@@ -1,6 +1,6 @@
 ---
 desktop_apps:
-  - firefox-developer-edition
+  - firefox@developer-edition
   # - pieces # https://pieces.app
   - arc
   - google-chrome
