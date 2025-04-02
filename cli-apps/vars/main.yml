@@ -70,6 +70,8 @@ cli_apps:
   - ranger
   - sevenzip
   - uv
+  - ls-lint # directory and filename linter https://ls-lint.org/
+  - git-who # tells you the people responsible for entire files or dirs
 
 node_packages:
   - npkill
